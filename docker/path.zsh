@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/bin/zsh
 reload-docker() {
-  eval "$(docker-machine env dev)"
+  eval "$(docker-machine env default)"
 }
-reload-docker >/dev/null 2>&1
+reload-docker &>/dev/null 2>&1

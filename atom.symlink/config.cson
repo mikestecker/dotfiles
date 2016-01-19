@@ -1,18 +1,24 @@
 "*":
   editor:
-    invisibles:
-      {}
-    fontFamily: "Fira Code"
+    invisibles: {}
     fontSize: 15
     showIndentGuide: true
     showInvisibles: true
     scrollPastEnd: true
+    fontFamily: "Hack"
   core:
     hideGitIgnoredFiles: true
     autoHideMenuBar: true
-  "exception-reporting":
-    userId: "eb68b94c-a76b-64f4-46e7-bd087cf1c98f"
+    projectHome: "~/Code/"
+    disabledPackages: [
+      "metrics"
+      "exception-reporting"
+    ]
   welcome:
     showOnStartup: false
-  linter:
-    {}
+  linter: {}
+  "go-plus":
+    goPath: "~/Code/Go"
+  "go-rename": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true

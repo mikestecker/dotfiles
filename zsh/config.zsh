@@ -25,7 +25,6 @@ setopt EXTENDED_HISTORY
 setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
 # adds history
 setopt APPEND_HISTORY
 # adds history incrementally and share it across sessions
@@ -42,7 +41,8 @@ setopt RM_STAR_SILENT
 
 zle -N newtab
 
-if [[ ! -z "$+terminfo[smkx]" ]] && [[ ! -z "$+terminfo[rmkx]" ]]; then
+# shellcheck disable=SC2004
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   function zle-line-init() {
     echoti smkx
   }

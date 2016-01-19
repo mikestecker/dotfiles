@@ -1,7 +1,18 @@
 #!/bin/sh
-brewbump() {
-  brew update
-  brew upgrade --all
-  brew cleanup
-  brew cask cleanup
+brew() {
+  case "$1" in
+    cleanup)
+      command brew cleanup
+      command brew cask cleanup
+      command brew prune
+      ;;
+    bump)
+      command brew update
+      command brew upgrade --all
+      brew cleanup
+      ;;
+    *)
+      command brew "$@"
+      ;;
+  esac
 }
