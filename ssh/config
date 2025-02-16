@@ -1,0 +1,7 @@
+# CodeSandbox SSH Integration
+Include "csb/config"
+# End of CodeSandbox SSH Integration
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
