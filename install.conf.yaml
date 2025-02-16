@@ -18,6 +18,7 @@
       path: zsh/zshrc.zsh
       force: true
     ~/.oh-my-zsh: zsh/oh-my-zsh
+    ~/.zgenom: zsh/zgenom
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

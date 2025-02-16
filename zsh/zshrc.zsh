@@ -3,64 +3,71 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# ZSH Config
-export ZSH=/Users/mikestecker/.oh-my-zsh # Path to oh-my-zsh installation.
-ZSH_THEME="powerlevel10k/powerlevel10k" # https://github.com/romkatv/powerlevel10k
-COMPLETION_WAITING_DOTS="true" # Display red dots while waiting for completion
+#!/usr/bin/env bash
+# Get zgen
+source ~/.zgenom/zgenom.zsh
+export DOTFILES="$HOME/.dotfiles"
+export GPG_TTY=$TTY # https://unix.stackexchange.com/a/608921
 
-# Setup zsh-completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+# Override compdump name: https://github.com/jandamm/zgenom/discussions/121
+export ZGEN_CUSTOM_COMPDUMP="~/.zcompdump-$(whoami).zwc"
 
-  autoload -Uz compinit
-  compinit
+# Generate zgen init.sh if it doesn't exist
+if ! zgenom saved; then
+    zgenom ohmyzsh
+
+    # Plugins
+    zgenom ohmyzsh plugins/git
+    zgenom ohmyzsh plugins/github
+    zgenom ohmyzsh plugins/sudo
+    zgenom ohmyzsh plugins/command-not-found
+    zgenom ohmyzsh plugins/kubectl
+    zgenom ohmyzsh plugins/docker
+    zgenom ohmyzsh plugins/docker-compose
+    zgenom ohmyzsh plugins/z
+    zgenom load zsh-users/zsh-autosuggestions
+    zgenom load jocelynmallon/zshmarks
+    zgenom load denolfe/git-it-on.zsh
+    zgenom load caarlos0/zsh-mkc
+    zgenom load caarlos0/zsh-git-sync
+    zgenom load caarlos0/zsh-add-upstream
+    zgenom load denolfe/zsh-prepend
+
+    zgenom load andrewferrier/fzf-z
+    zgenom load reegnz/jq-zsh-plugin
+
+    zgenom ohmyzsh plugins/asdf
+
+    zgenom load ntnyq/omz-plugin-pnpm
+
+    # These 2 must be in this order
+    zgenom load zsh-users/zsh-syntax-highlighting
+    zgenom load zsh-users/zsh-history-substring-search
+
+    # Set keystrokes for substring searching
+    zmodload zsh/terminfo
+    bindkey "$terminfo[kcuu1]" history-substring-search-up
+    bindkey "$terminfo[kcud1]" history-substring-search-down
+    bindkey "^k" history-substring-search-up
+    bindkey "^j" history-substring-search-down
+
+    # Warn you when you run a command that you've got an alias for
+    zgenom load djui/alias-tips
+
+    # Modified globalias plugin
+    zgenom load $DOTFILES/zsh/globalias.plugin.zsh
+
+    # Completion-only repos
+    zgenom load zsh-users/zsh-completions src
+
+    # Theme
+    zgenom load romkatv/powerlevel10k powerlevel10k
+
+    # Generate init.sh
+    zgenom save
 fi
 
-plugins=(
-  alias-finder
-  brew
-  compleat
-  copyfile
-  copypath
-  dirhistory
-  docker
-  docker-compose
-  # dotenv
-  encode64
-  extract
-  fzf
-  git
-  git-flow
-  github
-  gem
-  heroku
-  history
-  jsontools
-  kubectl
-  lol
-  node
-  npm
-  macos
-  rbenv
-  ruby
-  urltools
-  vscode
-  web-search
-  z
-  # zsh-completions # Installed via
-)
-
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source $ZSH/oh-my-zsh.sh
+source $DOTFILES/zsh/p10k.zsh
 
 # Basic Settings
 alias code="/Applications/Cursor.app/Contents/MacOS/Cursor" # Alias for Cursor, overrides code command
@@ -169,13 +176,13 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete" # Remove .DS_Store
 # Functions
 #-------------------------------------------------------------------------------
 # Homebrew update, requires: https://github.com/buo/homebrew-cask-upgrade
-bup() {
-  echo "Updating your [Homebrew] system"
-  brew update
-  brew upgrade
-  brew cu
-  brew cleanup
-}
+# bup() {
+#   echo "Updating your [Homebrew] system"
+#   brew update
+#   brew upgrade
+#   brew cu
+#   brew cleanup
+# }
 
 # File search
 search() {
@@ -290,3 +297,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/p10k.zsh.
+[[ ! -f ~/.dotfiles/zsh/p10k.zsh ]] || source ~/.dotfiles/zsh/p10k.zsh
