@@ -27,7 +27,6 @@
       force: true
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.zgenom: zsh/zgenom
-    ~/.asdfrc: zsh/asdfrc
 
     # VS Code MacOS
     ~/Library/Application Support/Code/User:
