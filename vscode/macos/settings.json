@@ -313,7 +313,7 @@
     "rgba(255,255,255,0.08)",
     "rgba(255,255,255,0.1)"
   ],
-  "editor.fontFamily": "'Operator Mono Lig Medium', 'Operator Mono Medium', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Operator Mono Lig Book', 'Operator Mono Book', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "files.maxMemoryForLargeFilesMB": 8192,
