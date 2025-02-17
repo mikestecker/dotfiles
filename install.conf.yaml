@@ -13,14 +13,10 @@
     stdout: true
 
 - link:
-    ~/.profile: profile
-    ~/.bash_profile: bash_profile
-    ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.ssh/config:
         path: ssh/config
         create: true
-    ~/.zprofile: zprofile
 
     ~/.zshrc:
       path: zsh/zshrc.zsh
