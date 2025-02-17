@@ -1,12 +1,14 @@
 aaron-bond.better-comments
 adamcaviness.theme-monokai-dark-soda
 adpyke.codesnap
+albymor.increment-selection
 alefragnani.bookmarks
 alefragnani.project-manager
 andrew-codes.cypress-snippets
 anseki.vscode-color
 anteprimorac.html-end-tag-labels
 asvetliakov.snapshot-tools
+austenc.tailwind-docs
 azemoh.one-monokai
 bibhasdn.unique-lines
 bierner.color-info
@@ -35,6 +37,7 @@ figma.figma-vscode-extension
 firsttris.vscode-jest-runner
 formulahendry.auto-close-tag
 formulahendry.auto-rename-tag
+fosshaas.fontsize-shortcuts
 github.vscode-github-actions
 graphql.vscode-graphql
 graphql.vscode-graphql-syntax
@@ -85,6 +88,7 @@ simonsiefke.svg-preview
 sleistner.vscode-fileutils
 sonarsource.sonarlint-vscode
 spoonscen.es6-mocha-snippets
+stivo.tailwind-fold
 streetsidesoftware.code-spell-checker
 styled-components.vscode-styled-components
 suming.react-proptypes-generate
@@ -101,6 +105,7 @@ visualstudioexptteam.vscodeintellicode
 vscode-snippet.snippet
 wallabyjs.console-ninja
 wallabyjs.quokka-vscode
+wayou.vscode-todo-highlight
 william-voyek.vscode-nginx
 wix.vscode-import-cost
 xabikos.javascriptsnippets
