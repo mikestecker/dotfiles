@@ -43,15 +43,13 @@ brew "meson"
 brew "mkcert"
 brew "zlib"
 brew "mysql"
-brew "node"
-brew "nativefier"
 brew "neofetch"
 brew "neovim"
+brew "node"
 brew "pipx"
 brew "pnpm"
 brew "potrace"
 brew "pwgen"
-brew "python@3.9"
 brew "qemu"
 brew "qt"
 brew "rbenv"
@@ -80,7 +78,6 @@ cask "bartender"
 cask "betterdisplay"
 cask "brave-browser"
 cask "cursor"
-cask "dash"
 cask "discord"
 cask "docker"
 cask "dropbox"
@@ -96,7 +93,6 @@ cask "istat-menus"
 cask "iterm2"
 cask "jordanbaird-ice"
 cask "macdown"
-cask "mamp"
 cask "notion"
 cask "obsidian"
 cask "omnidisksweeper"
@@ -106,6 +102,7 @@ cask "postico"
 cask "postman"
 cask "raindropio"
 cask "rocket"
+cask "slack"
 cask "sourcetree"
 cask "teamviewer"
 cask "transmission"
@@ -115,40 +112,13 @@ cask "visual-studio-code"
 cask "vlc"
 cask "warp"
 cask "zoom"
-mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
-mas "Bandbreite", id: 1528561380
-mas "Codye", id: 1516894961
-mas "Compressor", id: 424390742
-mas "CrystalFetch", id: 6454431289
-mas "DuckDuckGo Privacy for Safari", id: 1482920575
-mas "Fantastical", id: 975937182
-mas "Final Cut Pro", id: 424389933
-mas "GarageBand", id: 682658836
+mas "EasyRes", id: 688211836
 mas "GIF Brewery 3", id: 1081413713
 mas "Glance", id: 1513574319
-mas "GlueMotion", id: 1591624203
 mas "Hand Mirror", id: 1502839586
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Pastel", id: 413897608
-mas "Photomator", id: 1444636541
-mas "Pixelmator Pro", id: 1289583905
-mas "ReadKit", id: 1615798039
-mas "Reeder", id: 1529448980
-mas "Save to Raindrop.io", id: 1549370672
-mas "Slack", id: 803453959
-mas "Tab Space", id: 1473726602
-mas "Tabs Saver for Safari", id: 1440006971
-mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
-mas "TLDFLITE", id: 1152657562
-mas "Ulysses", id: 1225570693
-mas "Unsplash Wallpapers", id: 1284863847
-mas "WavePad Audio Editor", id: 970044455
-mas "Widgy", id: 1524540481
 mas "Xcode", id: 497799835
 vscode "aaron-bond.better-comments"
 vscode "adamcaviness.theme-monokai-dark-soda"
