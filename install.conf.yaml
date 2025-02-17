@@ -1,8 +1,16 @@
 - defaults:
     link:
       relink: true
+      create: true
 
-- clean: ['~']
+- clean: ['~', '~/bin']
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  -
+    command: ./macos/setup-homebrew.sh
+    description: Installing Homebrew and Essential Packages
+    stdout: true
 
 - link:
     ~/.profile: profile
@@ -19,7 +27,17 @@
       force: true
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.zgenom: zsh/zgenom
+    ~/.asdfrc: zsh/asdfrc
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    # VS Code MacOS
+    ~/Library/Application Support/Code/User:
+      if: '[ `uname` = Darwin ]'
+      glob: true
+      path: vscode/macos/*.json
+      force: true
+
+    ~/Library/Application Support/Code/User/snippets:
+      if: '[ `uname` = Darwin ]'
+      path: vscode/snippets
+      force: true
 

@@ -36,8 +36,6 @@ if ! zgenom saved; then
     zgenom load andrewferrier/fzf-z
     zgenom load reegnz/jq-zsh-plugin
 
-    zgenom ohmyzsh plugins/asdf
-
     zgenom load ntnyq/omz-plugin-pnpm
 
     # These 2 must be in this order
@@ -92,6 +90,26 @@ setopt HIST_IGNORE_SPACE # Don't record commands starting with space
 setopt HIST_VERIFY # Show command with history expansion before running it
 setopt HIST_REDUCE_BLANKS # Remove superfluous blanks from history
 export HISTCONTROL=erasedups
+
+if type fd > /dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fd --type f'
+fi
+
+# FZF config and theme
+export FZF_DEFAULT_OPTS='--reverse --bind 'ctrl-l:cancel' --height=90% --pointer='▶''
+source $DOTFILES/zsh/fzf-theme-monokai-mikes-mod.sh
+export FZF_TMUX_HEIGHT=80%
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export ZSH_PLUGINS_ALIAS_TIPS_REVEAL_TEXT="❯ "
+
+# pnpm
+export PNPM_HOME="/Users/$USER/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 #-------------------------------------------------------------------------------
 # Setup PATH

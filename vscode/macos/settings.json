@@ -1,0 +1,340 @@
+{
+  "editor.fontSize": 16,
+  "editor.fontWeight": "400",
+  "editor.lineHeight": 1.4,
+  "editor.fontLigatures": false,
+  "workbench.fontAliasing": "antialiased",
+  "editor.quickSuggestionsDelay": 30,
+  "editor.letterSpacing": 0.5,
+  "workbench.editor.tabSizing": "shrink",
+  "html.format.enable": true,
+  "html.format.preserveNewLines": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.cursorWidth": 5,
+  "editor.wordWrap": "on",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.cursorBlinking": "solid",
+  "editor.colorDecorators": false,
+  "editor.bracketPairColorization.enabled": true,
+  "workbench.colorCustomizations": {
+    "window.activeBorder": "#f92672",
+    "window.inactiveBorder": "#ffc600",
+    // "tab.activeBackground": "#282c34",
+    // "activityBar.background": "#282c34",
+    // "sideBar.background": "#282c34",
+    // "tab.activeBorder": "#d19a66",
+    "editor.lineHighlightBackground": "#3a3d4b",
+    // "editorBracketHighlight.foreground1": "#5caeef",
+    "editorBracketHighlight.foreground1": "#5ad4e6",
+    // "editorBracketHighlight.foreground2": "#dfb976",
+    "editorBracketHighlight.foreground2": "#fd9353",
+    // "editorBracketHighlight.foreground3": "#c172d9",
+    "editorBracketHighlight.foreground3": "#948ae3",
+    // "editorBracketHighlight.foreground4": "#4fb1bc",
+    "editorBracketHighlight.foreground4": "#85dacc",
+    // "editorBracketHighlight.foreground5": "#97c26c",
+    "editorBracketHighlight.foreground5": "#7bd88f",
+    // "editorBracketHighlight.foreground6": "#abb2c0",
+    "editorBracketHighlight.foreground6": "#f7f1ff",
+    // "editorBracketHiahliaht.unexpectedBracket.forearound": "#db6165"
+    "editorBracketHiahliaht.unexpectedBracket.forearound": "#ff6188"
+  },
+  "editor.tokenColorCustomizations": {
+    "[Monokai Pro (Filter Spectrum)]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "entity.name.tag.js.jsx support.class.component.js.jsx",
+            "entity.name.tag support.class.component",
+            "source.vue support.class.component"
+          ],
+          "settings": { "foreground": "#7bd88f" }
+        }
+      ]
+    }
+  },
+  // "editor.tokenColorCustomizations": {
+  //   "textMateRules": [
+  //     {
+  //       "name": "italic font",
+  //       "scope": [
+  //         "comment",
+  //         "keyword",
+  //         "storage",
+  //         "keyword.control",
+  //         "keyword.control.from",
+  //         "keyword.control.flow",
+  //         "keyword.operator.new",
+  //         "keyword.control.import",
+  //         "keyword.control.export",
+  //         "keyword.control.default",
+  //         "keyword.control.trycatch",
+  //         "keyword.control.conditional",
+  //         "storage.type",
+  //         "storage.type.class",
+  //         "storage.modifier.tsx",
+  //         "storage.type.function",
+  //         "storage.modifier.async",
+  //         "variable.language",
+  //         "variable.language.this",
+  //         "variable.language.super",
+  //         "meta.class",
+  //         "meta.var.expr",
+  //         "constant.language.null",
+  //         "support.type.primitive",
+  //         "entity.name.method.js",
+  //         "entity.other.attribute-name",
+  //         "punctuation.definition.comment",
+  //         "text.html.basic entity.other.attribute-name",
+  //         "tag.decorator.js entity.name.tag.js",
+  //         "tag.decorator.js punctuation.definition.tag.js",
+  //         "source.js constant.other.object.key.js string.unquoted.label.js",
+  //       ],
+  //       "settings": {
+  //         "fontStyle": "italic",
+  //       }
+  //     },
+  //   ]
+  // },
+  "editor.renderWhitespace": "none",
+  "editor.rulers": [80, 100],
+  "editor.minimap.showSlider": "always",
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "files.associations": {
+    ".env*": "makefile"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "twig": "html"
+  },
+  // this lets you quick open multiple items in a row and now have the previous ones closed on you
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+  // prettier
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 70,
+  // These are all my auto-save configs
+  "editor.formatOnSave": false,
+  // turn it off for JS
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // eslint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.addMissingImports": true
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "javascript.validate.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  // auto generated
+  "explorer.confirmDragAndDrop": false,
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "extensions.ignoreRecommendations": true,
+  "editor.inlineSuggest.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "eslint.alwaysShowStatus": true,
+  "cSpell.userWords": [
+    "acd",
+    "acdcorp",
+    "Apdex",
+    "backend",
+    "browserslist",
+    "camo",
+    "cloudinary",
+    "clsx",
+    "codegen",
+    "destructure",
+    "fastify",
+    "flexbox",
+    "frontmatter",
+    "gmail",
+    "injectable",
+    "keystonejs",
+    "lightgrey",
+    "lucide",
+    "memod",
+    "mercurius",
+    "mercuriusjs",
+    "mikestecker",
+    "minmax",
+    "mstecker",
+    "nestjs",
+    "prefetch",
+    "promisify",
+    "Recaptcha",
+    "refetch",
+    "rerender",
+    "rerendered",
+    "semibold",
+    "Signin",
+    "Signout",
+    "SIGNUP",
+    "slicemasters",
+    "stecker",
+    "subgrid",
+    "tailwindcss",
+    "Templating",
+    "TLDR",
+    "unnesssecary",
+    "Updateability",
+    "zipcode"
+  ],
+  "editor.autoIndent": "full",
+  "window.closeWhenEmpty": true,
+  "files.insertFinalNewline": true,
+  "editor.showFoldingControls": "always",
+  "editor.find.seedSearchStringFromSelection": "always",
+  "editor.renderLineHighlight": "all",
+  "editor.matchBrackets": "always",
+  "window.openFilesInNewWindow": "off",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.restoreViewState": true,
+  "editor.scrollBeyondLastLine": true,
+  "editor.minimap.enabled": true,
+  "editor.useTabStops": true,
+  "[jade]": {
+    "togglequotes.chars": ["\"", "'", "`"]
+  },
+  "editor.parameterHints.enabled": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.tree.indent": 20,
+  "polacode.shadow": "rgba(0, 0, 0, 0.55) 0px 0 0",
+  "polacode.transparentBackground": true,
+  "polacode.target": "snippet",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontSize": 14,
+  "propTypes.autoImport": "ES6",
+  "editor.suggest.insertMode": "replace",
+  "kite.showWelcomeNotificationOnStartup": false,
+  "liveshare.featureSet": "stable",
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  // https://stackoverflow.com/questions/51886037/visual-studio-code-using-large-amounts-of-cpu
+  "files.exclude": {
+    "**/tmp/**": true,
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true,
+    "**/.cache": true,
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.next": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/dist/**": true
+  },
+  "search.exclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "package-lock.json": true,
+    "yarn.lock": true
+  },
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "search.followSymlinks": false,
+  "beautify.config": "",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ts]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[tsx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "togglequotes.chars": ["\"", "'", "`"]
+  },
+  "terminal.integrated.fontFamily": "'Source Code Pro for Powerline', monospace",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.enableFiletypes": ["twig"],
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "indentRainbow.colors": [
+    "rgba(255,255,255,0.02)",
+    "rgba(255,255,255,0.04)",
+    "rgba(255,255,255,0.06)",
+    "rgba(255,255,255,0.08)",
+    "rgba(255,255,255,0.1)"
+  ],
+  "editor.fontFamily": "'Operator Mono Lig', 'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+  "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+  "files.maxMemoryForLargeFilesMB": 8192,
+  "security.workspace.trust.untrustedFiles": "open",
+  "eslint.debug": true,
+  "jest.autoRun": {
+    "onStartup": []
+  },
+  "editor.guides.bracketPairs": true,
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "terminal.integrated.env.osx": {},
+  "remote.SSH.remotePlatform": {
+    "sandbox.h7vxs8.csb": "linux"
+  },
+  "yaml.schemas": {
+    "file:///Users/mikestecker/.vscode/extensions/atlassian.atlascode-3.0.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "redhat.telemetry.enabled": false,
+  "errorLens.gutterIconsEnabled": true,
+  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.nvm/versions/node/v18.17.1/bin/node"
+}
