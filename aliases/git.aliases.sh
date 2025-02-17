@@ -47,4 +47,4 @@ alias fix="git diff --name-only | uniq | xargs cursor" # Open changed files
 alias "git latest"="git for-each-ref --sort=-committerdate refs/heads/"
 
 # Remove 'gl' alias from zsh plugin
-# unalias gl
+unalias gl
