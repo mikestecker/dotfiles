@@ -72,7 +72,6 @@ brew "zsh-syntax-highlighting"
 brew "heroku/brew/heroku"
 brew "stripe/stripe-cli/stripe"
 cask "1password"
-cask "alfred"
 cask "arc"
 cask "bartender"
 cask "betterdisplay"
@@ -86,7 +85,6 @@ cask "firefox"
 cask "fontsmoothingadjuster"
 cask "github"
 cask "google-chrome"
-cask "gzdoom"
 cask "handbrake"
 cask "imageoptim"
 cask "istat-menus"
@@ -100,26 +98,16 @@ cask "onyx"
 cask "plex"
 cask "postico"
 cask "postman"
-cask "raindropio"
-cask "rocket"
+cask "raycast"
 cask "slack"
 cask "sourcetree"
 cask "teamviewer"
 cask "transmission"
 cask "transmit"
-cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
 cask "warp"
 cask "zoom"
-mas "Amphetamine", id: 937984704
-mas "EasyRes", id: 688211836
-mas "GIF Brewery 3", id: 1081413713
-mas "Glance", id: 1513574319
-mas "Hand Mirror", id: 1502839586
-mas "Pastel", id: 413897608
-mas "The Unarchiver", id: 425424353
-mas "Xcode", id: 497799835
 vscode "aaron-bond.better-comments"
 vscode "adamcaviness.theme-monokai-dark-soda"
 vscode "adpyke.codesnap"
