@@ -155,6 +155,9 @@ if [[ -n ${ZSH_VERSION-} ]]; then
   }
 fi
 
+export ITERM2_SHOULD_DECORATE_PROMPT=0
+source $DOTFILES/iterm2/iterm2_shell_integration.zsh
+
 
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH

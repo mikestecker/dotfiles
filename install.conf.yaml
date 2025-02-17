@@ -28,6 +28,11 @@
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.zgenom: zsh/zgenom
 
+    ~/bin:
+      glob: true
+      path: scripts/*
+      relink: true
+
     # VS Code MacOS
     ~/Library/Application Support/Code/User:
       if: '[ `uname` = Darwin ]'
