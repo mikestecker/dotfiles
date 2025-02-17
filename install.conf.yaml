@@ -13,11 +13,6 @@
     stdout: true
 
 - link:
-    ~/.gitconfig: gitconfig
-    ~/.ssh/config:
-        path: ssh/config
-        create: true
-
     ~/.zshrc:
       path: zsh/zshrc.zsh
       force: true
