@@ -1,5 +1,5 @@
 {
-  "Custom Directory" : "Advanced",
+  "Thin Strokes" : 1,
   "Working Directory" : "\/Users\/mikestecker",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -200,8 +200,8 @@
   },
   "AWDS Pane Directory" : "",
   "Blur" : true,
-  "Vertical Spacing" : 1,
-  "Normal Font" : "OperatorMonoNerdFontComplete-Book 14",
+  "Normal Font" : "OperatorMonoNerdFontComplete-Medium 14",
+  "Vertical Spacing" : 1.1499999999999999,
   "Ansi 7 Color" : {
     "Red Component" : 0.92921137809753418,
     "Color Space" : "P3",
@@ -252,13 +252,13 @@
   },
   "Columns" : 130,
   "Visual Bell" : true,
-  "ASCII Ligatures" : false,
-  "Thin Strokes" : 1,
+  "Custom Directory" : "Advanced",
   "Ansi 5 Color" : {
     "Red Component" : 0.76255041360855103,
     "Color Space" : "P3",
     "Blue Component" : 0.50324028730392456,
     "Alpha Component" : 1,
     "Green Component" : 0.26549223065376282
-  }
+  },
+  "ASCII Ligatures" : false
 }

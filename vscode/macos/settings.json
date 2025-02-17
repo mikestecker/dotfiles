@@ -23,21 +23,22 @@
     // "activityBar.background": "#282c34",
     // "sideBar.background": "#282c34",
     // "tab.activeBorder": "#d19a66",
-    "editor.lineHighlightBackground": "#3a3d4b",
+    "editor.background": "#151818",
+    "editor.lineHighlightBackground": "#21252a",
     // "editorBracketHighlight.foreground1": "#5caeef",
-    "editorBracketHighlight.foreground1": "#5ad4e6",
+    // "editorBracketHighlight.foreground1": "#5ad4e6",
     // "editorBracketHighlight.foreground2": "#dfb976",
-    "editorBracketHighlight.foreground2": "#fd9353",
+    // "editorBracketHighlight.foreground2": "#fd9353",
     // "editorBracketHighlight.foreground3": "#c172d9",
-    "editorBracketHighlight.foreground3": "#948ae3",
+    // "editorBracketHighlight.foreground3": "#948ae3",
     // "editorBracketHighlight.foreground4": "#4fb1bc",
-    "editorBracketHighlight.foreground4": "#85dacc",
+    // "editorBracketHighlight.foreground4": "#85dacc",
     // "editorBracketHighlight.foreground5": "#97c26c",
-    "editorBracketHighlight.foreground5": "#7bd88f",
+    // "editorBracketHighlight.foreground5": "#7bd88f",
     // "editorBracketHighlight.foreground6": "#abb2c0",
-    "editorBracketHighlight.foreground6": "#f7f1ff",
-    // "editorBracketHiahliaht.unexpectedBracket.forearound": "#db6165"
-    "editorBracketHiahliaht.unexpectedBracket.forearound": "#ff6188"
+    // "editorBracketHighlight.foreground6": "#f7f1ff",
+    // "editorBracketHighlight.unexpectedBracket.foreground": "#db6165"
+    // "editorBracketHighlight.unexpectedBracket.foreground": "#ff6188"
   },
   "editor.tokenColorCustomizations": {
     "[Monokai Pro (Filter Spectrum)]": {
@@ -312,7 +313,7 @@
     "rgba(255,255,255,0.08)",
     "rgba(255,255,255,0.1)"
   ],
-  "editor.fontFamily": "'Operator Mono Lig', 'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Operator Mono Lig Medium', 'Operator Mono Medium', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "files.maxMemoryForLargeFilesMB": 8192,
@@ -336,5 +337,6 @@
   },
   "redhat.telemetry.enabled": false,
   "errorLens.gutterIconsEnabled": true,
-  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.nvm/versions/node/v18.17.1/bin/node"
+  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.nvm/versions/node/v18.17.1/bin/node",
+  "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)"
 }
