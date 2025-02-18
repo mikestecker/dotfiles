@@ -36,6 +36,8 @@ if ! zgenom saved; then
     zgenom load andrewferrier/fzf-z
     zgenom load reegnz/jq-zsh-plugin
 
+    zgenom ohmyzsh plugins/asdf
+
     zgenom load ntnyq/omz-plugin-pnpm
 
     # These 2 must be in this order
@@ -88,8 +90,7 @@ setopt pushd_ignore_dups # Ignore duplicates when using pushd
 #setopt pushd_silent
 
 # Basic Settings
-alias code="/Applications/Cursor.app/Contents/MacOS/Cursor" # Alias for Cursor, overrides code command
-export EDITOR="code -nw"
+export EDITOR="/Applications/Cursor.app/Contents/MacOS/Cursor -nw"
 export LANG=en_US.UTF-8  # Set language
 setopt AUTO_CD  # Type directory name to cd into it
 setopt EXTENDED_HISTORY  # Add timestamps to history
@@ -157,6 +158,18 @@ fi
 
 export ITERM2_SHOULD_DECORATE_PROMPT=0
 source $DOTFILES/iterm2/iterm2_shell_integration.zsh
+
+export ASDF_DOWNLOAD_PATH=bin/install
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
+source /opt/homebrew/share/zsh/site-functions
+
+# pnpm
+export PNPM_HOME="/Users/elliot/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 
 # Console Ninja

@@ -18,11 +18,16 @@
       force: true
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.zgenom: zsh/zgenom
+    ~/.asdfrc: zsh/asdfrc
 
     ~/bin:
       glob: true
       path: scripts/*
       relink: true
+
+    ~/.config/fastfetch:
+      path: fastfetch
+      force: true
 
     # VS Code MacOS
     ~/Library/Application Support/Code/User:
@@ -35,4 +40,33 @@
       if: '[ `uname` = Darwin ]'
       path: vscode/snippets
       force: true
+
+- asdf:
+  - plugin: nodejs
+    url: https://github.com/asdf-vm/asdf-nodejs
+    global: lts-gallium
+    versions:
+      - lts-carbon
+      - lts-dubnium
+      - lts-erbium
+      - lts-fermium
+      - lts-gallium
+      - latest
+  - plugin: yarn
+    url: https://github.com/twuni/asdf-yarn
+    global: latest
+    versions:
+      - latest
+  - plugin: pnpm
+    url: https://github.com/jonathanmorley/asdf-pnpm
+    global: latest
+    versions:
+      - latest
+
+- shell:
+  -
+    command: ./git/set-gitconfig.sh
+    description: Configuring Git
+    stdout: true
+    quiet: false
 
