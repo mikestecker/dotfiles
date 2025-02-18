@@ -6,6 +6,10 @@
 [dblink]: https://github.com/anishathalye/dotbot
 [dbshield]: https://img.shields.io/badge/powered%20by-dotbot-blue?style=flat
 
+> Personal dotfiles configuration
+
+![Image](preview.png)
+
 | Component                     | Tool                                                      | Config                                   |
 | ----------------------------- | --------------------------------------------------------- | ---------------------------------------- |
 | Installation                  | [Dotbot](https://github.com/anishathalye/dotbot)          | [install.conf.yaml](./install.conf.yaml) |
