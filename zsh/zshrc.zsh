@@ -162,7 +162,7 @@ source $DOTFILES/iterm2/iterm2_shell_integration.zsh
 source /opt/homebrew/share/zsh/site-functions
 
 # pnpm
-export PNPM_HOME="/Users/elliot/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
