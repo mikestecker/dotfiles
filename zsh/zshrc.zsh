@@ -117,6 +117,12 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 REPORTTIME=2
 TIMEFMT="%U user %S system %P cpu %*Es total"
 
+# Source local zshrc if exists
+test -f ~/.zshrc.local && source ~/.zshrc.local
+
+# Place to stash environment variables
+test -f ~/.secrets && source ~/.secrets
+
 # Load aliases
 for f in $DOTFILES/aliases/*.aliases.*sh; do source $f; done
 
@@ -171,7 +177,7 @@ esac
 
 
 # Console Ninja
-PATH=~/.console-ninja/.bin:$PATH
+
 
 # Add color to man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
