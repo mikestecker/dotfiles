@@ -17,6 +17,24 @@ fi
 if ! type brew > /dev/null 2>&1; then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  # Add Homebrew to PATH for current session
+  echo "Setting up Homebrew PATH..."
+  if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+# Ensure brew is in PATH
+if ! type brew > /dev/null 2>&1; then
+  echo "Setting up Homebrew PATH..."
+  if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
 fi
 
 export HOMEBREW_NO_AUTO_UPDATE=1

@@ -11,6 +11,18 @@
     command: ./macos/setup-homebrew.sh
     description: Installing Homebrew and Essential Packages
     stdout: true
+  -
+    command: |
+      # Initialize ASDF for current session
+      if [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then
+        source /opt/homebrew/opt/asdf/libexec/asdf.sh
+      elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
+        source /usr/local/opt/asdf/libexec/asdf.sh
+      elif command -v brew >/dev/null 2>&1; then
+        ASDF_DIR="$(brew --prefix asdf)/libexec"
+        [[ -f "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
+      fi
+    description: Initialize ASDF for current session
 
 - link:
     ~/.zshrc:
@@ -48,10 +60,9 @@
 - asdf:
   - plugin: nodejs
     url: https://github.com/asdf-vm/asdf-nodejs
-    global: latest
+    global: lts
     versions:
-      - lts-hydrogen
-      - lts-iron
+      - lts
       - latest
   - plugin: pnpm
     url: https://github.com/jonathanmorley/asdf-pnpm

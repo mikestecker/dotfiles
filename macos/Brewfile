@@ -1,6 +1,6 @@
 tap "buo/cask-upgrade"
 tap "heroku/brew"
-tap "homebrew/bundle"
+
 tap "sidneys/homebrew"
 tap "stripe/stripe-cli"
 brew "asdf"
@@ -58,9 +58,9 @@ brew "zlib"
 brew "mysql"
 brew "neofetch"
 brew "neovim"
-brew "node"
+
 brew "pipx"
-brew "pnpm"
+
 brew "potrace"
 brew "pwgen"
 brew "qemu"
@@ -77,7 +77,7 @@ brew "vips"
 brew "watchman"
 brew "wimlib"
 brew "wrk"
-brew "yarn"
+
 brew "yt-dlp"
 brew "zoxide"
 brew "zsh"
@@ -92,7 +92,7 @@ cask "arc"
 cask "bartender"
 cask "betterdisplay"
 
-cask "brave-browser"
+
 cask "cursor"
 cask "discord"
 cask "docker"
@@ -112,17 +112,17 @@ cask "notion"
 cask "obsidian"
 cask "omnidisksweeper"
 # cask "onyx"
-cask "plex"
+
 cask "postico"
 cask "postman"
 cask "raycast"
 cask "rectangle"
 cask "ngrok"
 cask "slack"
-cask "sourcetree"
-cask "teamviewer"
-cask "transmission"
-cask "transmit"
+
+
+
+
 cask "visual-studio-code"
 cask "vlc"
 cask "warp"

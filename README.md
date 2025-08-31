@@ -127,7 +127,7 @@ z my-proj          # Smart cd with zoxide (remembers frecency)
 xcode-select --install
 
 # 2. Clone the repository after installation completes
-git clone git@github.com:mikestecker/dotfiles.git .dotfiles --recursive
+git clone https://github.com/mikestecker/dotfiles.git .dotfiles --recursive
 cd .dotfiles
 
 # 3. Install everything
@@ -141,7 +141,7 @@ make dev-setup
 
 ```sh
 # Clone and install (Xcode CLI Tools check included)
-git clone git@github.com:mikestecker/dotfiles.git .dotfiles --recursive
+git clone https://github.com/mikestecker/dotfiles.git .dotfiles --recursive
 cd .dotfiles
 make install
 ```
