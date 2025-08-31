@@ -30,5 +30,5 @@ brew-restore:
 	brew cleanup
 
 # Set MacOS defaults
-macos:
-	./macos/set-defaults.sh
+# macos:
+# 	./macos/set-defaults.sh

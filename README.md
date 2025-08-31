@@ -15,12 +15,67 @@
 | Installation                  | [Dotbot](https://github.com/anishathalye/dotbot)          | [install.conf.yaml](./install.conf.yaml) |
 | Theme                         | [Powerlevel10k](https://github.com/romkatv/powerlevel10k) | [p10k.zsh](./zsh/p10k.zsh)               |
 | .zshrc                        | [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)    | [.zshrc](./zsh/zshrc.zsh)                |
+| Modern CLI Tools              | [bat](https://github.com/sharkdp/bat), [lazygit](https://github.com/jesseduffield/lazygit), [httpie](https://httpie.io/) | [aliases/](./aliases/)                   |
 
 ## [Makefile](./Makefile)
 
 - Install with dotbot
 - Homebrew save/restore
 - VS Code extension save/restore
+
+## Modern CLI Tools & Aliases
+
+Enhanced command-line experience with modern alternatives to traditional tools:
+
+### Core Tools
+
+- **[bat](https://github.com/sharkdp/bat)** - Better `cat` with syntax highlighting (`cat` → `bat`)
+- **[lazygit](https://github.com/jesseduffield/lazygit)** - Terminal UI for git (`lg`)
+- **[httpie](https://httpie.io/)** - Better HTTP client (`hget`, `hpost`, etc.)
+- **[tldr](https://tldr.sh/)** - Simplified man pages (`tl`, `mans`)
+- **[delta](https://github.com/dandavison/delta)** - Better git diff (configured in git)
+
+### Key Aliases
+
+```bash
+# File operations
+cat file.js        # Uses bat with syntax highlighting
+fzfp               # fzf with bat preview
+
+# Git workflow  
+lg                 # Open lazygit TUI
+lgg ~/project      # Open lazygit in specific directory
+
+# HTTP testing
+hget api.github.com/users/mikestecker
+hnext              # Quick test localhost:3000
+hreact             # Quick test localhost:3000
+
+# Documentation
+tl git             # Quick tldr for git
+mans docker        # Try tldr first, fallback to man
+```
+
+*See [aliases/modern-cli.aliases.sh](./aliases/modern-cli.aliases.sh) for complete list*
+
+## Performance Optimizations
+
+**High-performance shell configuration** with lazy loading and caching (default):
+
+- **75%+ faster startup** (0.24s vs 0.97s)
+- **Cached expensive operations** (brew prefix, path resolution)
+- **Lazy loading** for NVM, rbenv, and heavy plugins
+- **Background loading** of non-essential components
+
+```bash
+# Benchmark your shell performance
+./scripts/benchmark-zsh
+
+# Revert to original configuration if needed
+cp zsh/zshrc-original.zsh zsh/zshrc.zsh
+```
+
+*See [docs/PERFORMANCE.md](./docs/PERFORMANCE.md) for detailed information*
 
 ## Usage
 

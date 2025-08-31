@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#
+# Simple zsh startup benchmark
+
+DOTFILES="$HOME/.dotfiles"
+
+echo "=== ZSH Startup Benchmark ==="
+echo
+
+# Test original configuration
+echo "Testing original configuration..."
+time1=$(/usr/bin/time -p zsh -c "source '$DOTFILES/zsh/zshrc.zsh'; exit" 2>&1 | grep real | awk '{print $2}')
+echo "Original: ${time1}s"
+
+# Test optimized configuration
+echo "Testing optimized configuration..."
+time2=$(/usr/bin/time -p zsh -c "source '$DOTFILES/zsh/zshrc-optimized.zsh'; exit" 2>&1 | grep real | awk '{print $2}')
+echo "Optimized: ${time2}s"
+
+# Calculate improvement
+improvement=$(awk -v orig="$time1" -v opt="$time2" 'BEGIN {
+    if (orig > 0) printf "%.1f", (orig - opt) / orig * 100
+    else print "0.0"
+}')
+
+echo
+echo "Performance improvement: ${improvement}%"
+
+if (( $(echo "$improvement > 0" | awk '{print ($1 > 0)}') )); then
+    echo "✓ Optimized version is faster!"
+else
+    echo "⚠ No significant improvement"
+fi

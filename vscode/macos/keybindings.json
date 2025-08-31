@@ -31,4 +31,12 @@
     "key": "ctrl+shift+alt+cmd+a",
     "command": "editor.action.addSelectionToPreviousFindMatch"
   },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+e",
+    "command": "composerMode.background"
+  },
 ]

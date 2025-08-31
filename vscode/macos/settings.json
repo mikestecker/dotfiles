@@ -445,7 +445,7 @@
   },
   "redhat.telemetry.enabled": false,
   "errorLens.gutterIconsEnabled": true,
-  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.nvm/versions/node/v18.17.1/bin/node",
+  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.nvm/versions/node/v22.12.0/bin/node",
   "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
   "editor.lineNumbers": "on",
   "terminal.external.osxExec": "iTerm.app"
