@@ -17,14 +17,29 @@ fi
 
 if ! type brew > /dev/null 2>&1; then
   echo "Installing Homebrew..."
+  # Temporarily disable exit on error for Homebrew installation
+  set +e
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
+  homebrew_exit_code=$?
+  set -e
+  
   # Add Homebrew to PATH for current session
   echo "Setting up Homebrew PATH..."
   if [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   elif [[ -f "/usr/local/bin/brew" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
+  fi
+  
+  # Check if brew is now available
+  if ! type brew > /dev/null 2>&1; then
+    echo "❌ Homebrew installation may have failed. Continuing with manual setup..."
+    echo "📝 If brew commands fail, please install Homebrew manually:"
+    echo "   /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+    echo "   Then restart the installation with: make install"
+    # Don't exit here, let the process continue to see what else works
+  else
+    echo "✅ Homebrew installed successfully"
   fi
 fi
 
@@ -56,18 +71,22 @@ PACKAGES=(
 
 echo "Checking Homebrew packages..."
 
-brew_list=$(brew list --formulae -1)
+if type brew > /dev/null 2>&1; then
+  brew_list=$(brew list --formulae -1)
 
-for PKG in "${PACKAGES[@]}"
-do
-  if ! echo "$brew_list" | grep -q "$PKG"; then
-    echo "Installing $PKG..."
-    brew install $PKG
-  fi
-done
+  for PKG in "${PACKAGES[@]}"
+  do
+    if ! echo "$brew_list" | grep -q "$PKG"; then
+      echo "Installing $PKG..."
+      brew install $PKG
+    fi
+  done
 
-echo "Core packages installed."
+  echo "Core packages installed."
 
-echo "Installing brewfile..."
-
-brew bundle --file=macos/Brewfile
+  echo "Installing brewfile..."
+  brew bundle --file=macos/Brewfile
+else
+  echo "⚠️  Homebrew not available, skipping package installation"
+  echo "📝 Please install Homebrew manually and re-run: make install"
+fi

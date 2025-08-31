@@ -150,6 +150,8 @@ make install
 
 **Post-Installation**: Set your git email with `git config --global user.email 'your-email@example.com'` before making commits.
 
+**If Homebrew Installation Fails**: Run `make brew-restore-fresh` manually after setting up Homebrew, then retry `make install`.
+
 ### Other Tasks
 
 *[See Makefile](./Makefile)*

@@ -11,6 +11,7 @@
     command: ./macos/setup-homebrew.sh
     description: Installing Homebrew and Essential Packages
     stdout: true
+    stdin: true
   -
     command: |
       # Initialize ASDF for current session
