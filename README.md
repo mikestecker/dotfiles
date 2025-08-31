@@ -116,23 +116,37 @@ z my-proj          # Smart cd with zoxide (remembers frecency)
 
 ## Usage
 
-*Prerequisites: macOS with Xcode Command Line Tools*
+*Prerequisites: macOS (fresh installation supported)*
 
 ### Installation
 
+#### Fresh macOS Setup
+
 ```sh
-# Clone the repository
+# 1. Install Xcode Command Line Tools first (required for git)
+xcode-select --install
+
+# 2. Clone the repository after installation completes
 git clone git@github.com:mikestecker/dotfiles.git .dotfiles --recursive
 cd .dotfiles
 
-# Install everything (includes Xcode Command Line Tools check)
+# 3. Install everything
 make install
 
 # Or for frontend-focused setup
 make dev-setup
 ```
 
-**Note**: The installation will automatically check for and prompt to install Xcode Command Line Tools if not present.
+#### Existing Development Machine
+
+```sh
+# Clone and install (Xcode CLI Tools check included)
+git clone git@github.com:mikestecker/dotfiles.git .dotfiles --recursive
+cd .dotfiles
+make install
+```
+
+**Note**: On fresh macOS installations, you must install Xcode Command Line Tools manually first to get `git`. The dotfiles installation will handle everything else automatically.
 
 ### Other Tasks
 
