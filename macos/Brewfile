@@ -1,6 +1,6 @@
 tap "buo/cask-upgrade"
 tap "heroku/brew"
-
+tap "homebrew/cask-fonts"
 tap "sidneys/homebrew"
 tap "stripe/stripe-cli"
 brew "asdf"

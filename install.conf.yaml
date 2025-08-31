@@ -58,6 +58,25 @@
       path: vscode/snippets
       force: true
 
+- shell:
+  -
+    command: |
+      echo "Installing Operator Mono Nerd Font..."
+      if [[ $(uname) = "Darwin" ]]; then
+        # Install fonts to user Library (no admin required)
+        FONT_DIR="$HOME/Library/Fonts"
+        mkdir -p "$FONT_DIR"
+        
+        # Copy all Operator Mono Nerd Font files
+        cp -f fonts/operator-mono-nerd/*.otf "$FONT_DIR/"
+        
+        echo "✅ Installed $(ls fonts/operator-mono-nerd/*.otf | wc -l | tr -d ' ') Operator Mono Nerd Font variants"
+      else
+        echo "⚠️  Font installation skipped (not macOS)"
+      fi
+    description: Installing Operator Mono Nerd Font
+    stdout: true
+
 - asdf:
   - plugin: nodejs
     url: https://github.com/asdf-vm/asdf-nodejs
