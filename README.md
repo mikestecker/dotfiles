@@ -148,6 +148,8 @@ make install
 
 **Note**: On fresh macOS installations, you must install Xcode Command Line Tools manually first to get `git`. The dotfiles installation will handle everything else automatically.
 
+**Post-Installation**: Set your git email with `git config --global user.email 'your-email@example.com'` before making commits.
+
 ### Other Tasks
 
 *[See Makefile](./Makefile)*
