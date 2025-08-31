@@ -91,7 +91,7 @@ cask "1password"
 cask "arc"
 cask "bartender"
 cask "betterdisplay"
-cask "bitwarden"
+
 cask "brave-browser"
 cask "cursor"
 cask "discord"
