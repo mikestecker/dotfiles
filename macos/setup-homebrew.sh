@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e  # Exit on error
 #
 # Install homebrew and essential packages
 
@@ -17,7 +18,7 @@ fi
 if ! type brew > /dev/null 2>&1; then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
+
   # Add Homebrew to PATH for current session
   echo "Setting up Homebrew PATH..."
   if [[ -f "/opt/homebrew/bin/brew" ]]; then

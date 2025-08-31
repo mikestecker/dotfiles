@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e  # Exit on error
 # shellcheck disable=SC2016
 
 # Name
