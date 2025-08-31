@@ -124,6 +124,16 @@ if command -v chromium >/dev/null 2>&1; then
     export PUPPETEER_EXECUTABLE_PATH=$(command -v chromium)
 fi
 
+# Initialize direnv if installed (environment management)
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
+
+# Initialize zoxide if installed (better cd)
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
+
 # Man page colors
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'

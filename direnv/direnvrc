@@ -1,0 +1,67 @@
+# Global direnv configuration
+# https://direnv.net/
+
+# Enable strict_env by default for better security
+strict_env
+
+# Layout functions for common project types
+
+# Node.js project with specific version
+layout_nodejs() {
+    local node_version=${1:-lts}
+    local nvmrc_path="$PWD/.nvmrc"
+
+    if [[ -f "$nvmrc_path" ]]; then
+        node_version=$(cat "$nvmrc_path")
+    fi
+
+    if has nvm; then
+        nvm use "$node_version"
+    elif has asdf; then
+        asdf local nodejs "$node_version"
+    fi
+
+    # Add node_modules/.bin to PATH
+    PATH_add node_modules/.bin
+}
+
+# React project with common environment
+layout_react() {
+    layout_nodejs "$@"
+
+    # Common React environment variables
+    export BROWSER=none  # Prevent auto-opening browser
+    export FAST_REFRESH=true
+    export GENERATE_SOURCEMAP=true
+
+    # Development optimizations
+    export NODE_OPTIONS="--max-old-space-size=4096"
+}
+
+# Next.js project
+layout_nextjs() {
+    layout_nodejs "$@"
+
+    # Next.js specific environment
+    export NEXT_TELEMETRY_DISABLED=1
+    export NODE_OPTIONS="--max-old-space-size=4096"
+}
+
+# TypeScript project
+layout_typescript() {
+    layout_nodejs "$@"
+
+    # TypeScript development optimizations
+    export TS_NODE_TRANSPILE_ONLY=true
+    export TS_NODE_FILES=true
+}
+
+# Add pnpm global bin to PATH if available
+if has pnpm; then
+    PATH_add "$(pnpm config get global-bin-dir 2>/dev/null || echo "$HOME/.local/share/pnpm")"
+fi
+
+# Add common development directories to PATH
+PATH_add bin
+PATH_add scripts
+PATH_add .bin

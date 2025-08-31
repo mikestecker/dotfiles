@@ -39,6 +39,15 @@ git config --global alias.authors 'shortlog -s -n -e --all --no-merges' # Show t
 ## Find most recent common ancestor between HEAD and another branch
 git config --global alias.find-base '!f() { git merge-base HEAD $1 | xargs git l3; }; f'
 
+# Frontend development specific aliases
+git config --global alias.feature '!f() { git checkout -b feature/$1; }; f' # Create feature branch
+git config --global alias.hotfix '!f() { git checkout -b hotfix/$1; }; f' # Create hotfix branch
+git config --global alias.cleanup '!f() { git branch --merged | grep -v "\\*\\|main\\|master\\|develop" | xargs -n 1 git branch -d; }; f' # Clean merged branches
+git config --global alias.pushf 'push --force-with-lease' # Safer force push
+git config --global alias.amend 'commit --amend --no-edit' # Quick amend
+git config --global alias.fixup '!f() { git commit --fixup $1; }; f' # Fixup commit
+git config --global alias.squash-all '!f() { git reset --soft $(git merge-base HEAD $1) && git commit; }; f' # Squash all commits
+
 # Fancy Logs
 git config --global alias.l 'log --oneline --graph --decorate --all' # Show the commit history
 git config --global alias.l1 "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)<%an>%Creset%C(yellow)%d%Creset' --all" # Show the commit history

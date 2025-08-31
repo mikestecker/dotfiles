@@ -1,6 +1,6 @@
-.PHONY: install link vscode-install vscode-save brew brew-restore macos
+.PHONY: install link vscode-install vscode-save brew brew-restore macos dev-setup
 
-# Run dotbot install script
+# Run dotbot install script (includes Xcode Command Line Tools check)
 install:
 	./install
 
@@ -30,5 +30,10 @@ brew-restore:
 	brew cleanup
 
 # Set MacOS defaults
-# macos:
-# 	./macos/set-defaults.sh
+macos:
+	./macos/set-defaults.sh
+
+# Quick development environment setup
+dev-setup:
+	brew bundle install --file=macos/Brewfile
+	./macos/set-defaults.sh

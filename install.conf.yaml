@@ -29,6 +29,10 @@
       path: fastfetch
       force: true
 
+    ~/.config/direnv:
+      path: direnv
+      force: true
+
     # VS Code MacOS
     ~/Library/Application Support/Code/User:
       if: '[ `uname` = Darwin ]'

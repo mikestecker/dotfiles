@@ -93,3 +93,32 @@ if type http > /dev/null 2>&1; then
   # Flask default
   alias hflask='http localhost:5000'
 fi
+
+# fx (interactive JSON viewer)
+if type fx > /dev/null 2>&1; then
+  alias json='fx'
+  alias jless='fx'
+fi
+
+# zoxide (better cd)
+if type zoxide > /dev/null 2>&1; then
+  alias cd='z'
+  alias cdi='zi'  # interactive cd
+fi
+
+# gping (graphical ping)
+if type gping > /dev/null 2>&1; then
+  alias ping='gping'
+fi
+
+# wrk (HTTP benchmarking)
+if type wrk > /dev/null 2>&1; then
+  alias loadtest='wrk -t12 -c400 -d30s'
+  alias quicktest='wrk -t4 -c100 -d10s'
+fi
+
+# commitizen (better commits)
+if type cz > /dev/null 2>&1; then
+  alias commit='cz commit'
+  alias ccommit='cz commit'
+fi
