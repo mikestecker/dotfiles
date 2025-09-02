@@ -15,6 +15,7 @@
 | Installation                  | [Dotbot](https://github.com/anishathalye/dotbot)          | [install.conf.yaml](./install.conf.yaml) |
 | Theme                         | [Powerlevel10k](https://github.com/romkatv/powerlevel10k) | [p10k.zsh](./zsh/p10k.zsh)               |
 | .zshrc                        | [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)    | [.zshrc](./zsh/zshrc.zsh)                |
+| Development Tools             | [mise](https://github.com/jdx/mise)                       | Global: `mise use --global node@lts pnpm@latest` |
 | Modern CLI Tools              | [bat](https://github.com/sharkdp/bat), [lazygit](https://github.com/jesseduffield/lazygit), [httpie](https://httpie.io/) | [aliases/](./aliases/)                   |
 | Font                          | Operator Mono Nerd Font                                   | [fonts/](./fonts/)                      |
 
@@ -25,6 +26,32 @@
 - VS Code extension save/restore
 - Frontend development environment setup
 - macOS defaults optimization
+
+## Development Tools Management
+
+### mise - Modern Tool Version Manager
+
+[mise](https://github.com/jdx/mise) replaces asdf/nvm with a faster, more modern approach:
+
+```bash
+# Install and use Node.js versions
+mise use node@lts          # Use Node.js LTS in current project
+mise use --global node@lts # Set Node.js LTS globally
+mise install node@20       # Install specific version
+
+# Install multiple tools
+mise use --global node@lts pnpm@latest
+
+# Project-specific versions (creates .mise.toml)
+mise use node@20 pnpm@9
+```
+
+**Benefits over asdf:**
+
+- ⚡ **Faster** - Rust-based, no shell overhead
+- 🎯 **No shims** - Direct paths to binaries
+- 🔧 **Built-in tasks** - Replace some Makefile functionality
+- 📦 **Better Node.js** - First-class pnpm integration
 
 ## Modern CLI Tools & Aliases
 

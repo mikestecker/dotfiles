@@ -22,7 +22,7 @@ if ! type brew > /dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   homebrew_exit_code=$?
   set -e
-  
+
   # Add Homebrew to PATH for current session
   echo "Setting up Homebrew PATH..."
   if [[ -f "/opt/homebrew/bin/brew" ]]; then
@@ -30,7 +30,7 @@ if ! type brew > /dev/null 2>&1; then
   elif [[ -f "/usr/local/bin/brew" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
   fi
-  
+
   # Check if brew is now available
   if ! type brew > /dev/null 2>&1; then
     echo "❌ Homebrew installation may have failed. Continuing with manual setup..."
@@ -57,7 +57,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
 
 PACKAGES=(
-  "asdf"
+  "mise"
   "fzf"
   "git"
   "eza"

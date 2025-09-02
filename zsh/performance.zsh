@@ -67,7 +67,7 @@ build_optimized_path() {
     "$HOMEBREW_PREFIX/bin"
     "$HOMEBREW_COREUTILS"
     "$HOMEBREW_PREFIX/opt/python@3.12/libexec/bin"
-    "$ASDF_DATA_DIR/shims"
+    "$HOME/.local/share/mise/shims"
     "$PNPM_HOME"
     "$BUN_INSTALL/bin"
     "/usr/bin"

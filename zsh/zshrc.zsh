@@ -14,7 +14,10 @@ export GPG_TTY=$TTY
 source "$DOTFILES/zsh/performance.zsh"
 
 # Essential environment variables
-export ASDF_DATA_DIR="$HOME/.asdf"
+# Mise activation - modern replacement for asdf
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 export EDITOR="/Applications/Cursor.app/Contents/MacOS/Cursor -nw"

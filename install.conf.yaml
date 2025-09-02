@@ -14,16 +14,14 @@
     stdin: true
   -
     command: |
-      # Initialize ASDF for current session
-      if [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then
-        source /opt/homebrew/opt/asdf/libexec/asdf.sh
-      elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
-        source /usr/local/opt/asdf/libexec/asdf.sh
-      elif command -v brew >/dev/null 2>&1; then
-        ASDF_DIR="$(brew --prefix asdf)/libexec"
-        [[ -f "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
+      # Initialize mise for current session
+      if command -v mise >/dev/null 2>&1; then
+        eval "$(mise activate bash)"
+        echo "✅ Mise initialized for installation session"
+      else
+        echo "⚠️  Mise not found, will be available after shell restart"
       fi
-    description: Initialize ASDF for current session
+    description: Initialize mise for current session
 
 - link:
     ~/.zshrc:
@@ -31,7 +29,7 @@
       force: true
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.zgenom: zsh/zgenom
-    ~/.asdfrc: zsh/asdfrc
+
 
     ~/bin:
       glob: true
@@ -66,10 +64,10 @@
         # Install fonts to user Library (no admin required)
         FONT_DIR="$HOME/Library/Fonts"
         mkdir -p "$FONT_DIR"
-        
+
         # Copy all Operator Mono Nerd Font files
         cp -f fonts/operator-mono-nerd/*.otf "$FONT_DIR/"
-        
+
         echo "✅ Installed $(ls fonts/operator-mono-nerd/*.otf | wc -l | tr -d ' ') Operator Mono Nerd Font variants"
       else
         echo "⚠️  Font installation skipped (not macOS)"
@@ -77,23 +75,27 @@
     description: Installing Operator Mono Nerd Font
     stdout: true
 
-- asdf:
-  - plugin: nodejs
-    url: https://github.com/asdf-vm/asdf-nodejs
-    global: lts
-    versions:
-      - lts
-      - latest
-  - plugin: pnpm
-    url: https://github.com/jonathanmorley/asdf-pnpm
-    global: latest
-    versions:
-      - latest
-  # - plugin: yarn
-  #   url: https://github.com/twuni/asdf-yarn
-  #   global: latest
-  #   versions:
-  #     - latest
+- shell:
+  -
+    command: |
+      if command -v mise >/dev/null 2>&1; then
+        echo "Installing Node.js and pnpm with mise..."
+        mise use --global node@lts pnpm@latest
+        echo "✅ Node.js LTS and pnpm latest installed globally"
+
+        # Install additional useful versions
+        mise install node@latest
+        echo "✅ Node.js latest version also installed"
+
+        # Set global versions
+        mise use --global node@lts pnpm@latest
+        echo "✅ Global versions set: node@lts, pnpm@latest"
+      else
+        echo "⚠️  Mise not available, skipping tool installation"
+      fi
+    description: Installing Node.js and pnpm with mise
+    stdout: true
+
 
 - shell:
   -
