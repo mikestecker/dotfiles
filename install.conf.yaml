@@ -13,13 +13,7 @@
     stdout: true
     stdin: true
   -
-    command: |
-      if command -v mise >/dev/null 2>&1; then
-        eval "$(mise activate bash)"
-        echo "✅ Mise initialized for installation session"
-      else
-        echo "⚠️  Mise not found, will be available after shell restart"
-      fi
+    command: command -v mise >/dev/null 2>&1 && eval "$(mise activate bash)" && echo "✅ Mise initialized for installation session" || echo "⚠️  Mise not found, will be available after shell restart"
     description: Initialize mise for current session
     stdout: true
 
@@ -58,33 +52,13 @@
 
 - shell:
   -
-    command: |
-      echo "Installing Operator Mono Nerd Font..."
-      if [[ $(uname) = "Darwin" ]]; then
-        FONT_DIR="$HOME/Library/Fonts"
-        mkdir -p "$FONT_DIR"
-        cp -f fonts/operator-mono-nerd/*.otf "$FONT_DIR/"
-        echo "✅ Installed $(ls fonts/operator-mono-nerd/*.otf | wc -l | tr -d ' ') Operator Mono Nerd Font variants"
-      else
-        echo "⚠️  Font installation skipped (not macOS)"
-      fi
+    command: ./scripts/install-fonts.sh
     description: Installing Operator Mono Nerd Font
     stdout: true
 
 - shell:
   -
-    command: |
-      if command -v mise >/dev/null 2>&1; then
-        echo "Installing Node.js and pnpm with mise..."
-        mise use --global node@lts pnpm@latest
-        echo "✅ Node.js LTS and pnpm latest installed globally"
-        mise install node@latest
-        echo "✅ Node.js latest version also installed"
-        mise use --global node@lts pnpm@latest
-        echo "✅ Global versions set: node@lts, pnpm@latest"
-      else
-        echo "⚠️  Mise not available, skipping tool installation"
-      fi
+    command: ./scripts/install-mise-tools.sh
     description: Installing Node.js and pnpm with mise
     stdout: true
 
@@ -96,17 +70,7 @@
     stdout: true
     quiet: false
   -
-    command: |
-      echo ""
-      echo "🎉 =============================================="
-      echo "✅ Dotfiles installation completed successfully!"
-      echo "🎉 =============================================="
-      echo ""
-      echo "📋 Next steps:"
-      echo "   • Set git email: git config --global user.email 'your-email@example.com'"
-      echo "   • Restart terminal or run: source ~/.zshrc"
-      echo "   • Enjoy your optimized development environment!"
-      echo ""
+    command: ./scripts/installation-complete.sh
     description: Installation Complete
     stdout: true
 
