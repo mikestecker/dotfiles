@@ -26,6 +26,7 @@
 - VS Code extension save/restore
 - Frontend development environment setup
 - macOS defaults optimization
+- Migration from asdf to mise
 
 ## Development Tools Management
 
@@ -179,6 +180,27 @@ make install
 **Post-Installation**: Set your git email with `git config --global user.email 'your-email@example.com'` before making commits.
 
 **If Homebrew Installation Fails**: Run `make brew-restore-fresh` manually after setting up Homebrew, then retry `make install`.
+
+### Migrating from Previous Versions
+
+If you have an existing installation with asdf, migrate to mise:
+
+```sh
+# Pull latest changes
+git pull origin main
+
+# Run migration script
+make migrate
+
+# Update dotfiles configuration
+make install
+```
+
+The migration will:
+- ✅ Install mise via Homebrew
+- ✅ Migrate Node.js versions from asdf to mise
+- ✅ Set up pnpm with mise
+- ✅ Provide cleanup instructions for asdf
 
 ### Other Tasks
 

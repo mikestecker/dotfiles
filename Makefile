@@ -1,4 +1,4 @@
-.PHONY: install link vscode-install vscode-save brew brew-restore brew-restore-fresh macos dev-setup
+.PHONY: install link vscode-install vscode-save brew brew-restore brew-restore-fresh macos dev-setup migrate
 
 # Run dotbot install script (includes Xcode Command Line Tools check)
 install:
@@ -43,3 +43,7 @@ macos:
 dev-setup:
 	brew bundle install --file=macos/Brewfile
 	./macos/set-defaults.sh
+
+# Migrate existing installation from asdf to mise
+migrate:
+	./scripts/migrate-to-mise.sh
