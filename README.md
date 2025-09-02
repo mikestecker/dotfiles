@@ -183,7 +183,7 @@ make install
 
 ### Migrating from Previous Versions
 
-If you have an existing installation with asdf, migrate to mise:
+If you have an existing installation with asdf or nvm, migrate to mise:
 
 ```sh
 # Pull latest changes
@@ -198,9 +198,9 @@ make install
 
 The migration will:
 - ✅ Install mise via Homebrew
-- ✅ Migrate Node.js versions from asdf to mise
+- ✅ Migrate Node.js versions from asdf/nvm to mise
 - ✅ Set up pnpm with mise
-- ✅ Provide cleanup instructions for asdf
+- ✅ Provide cleanup instructions for asdf and nvm
 
 ### Other Tasks
 
