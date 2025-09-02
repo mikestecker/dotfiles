@@ -14,7 +14,6 @@
     stdin: true
   -
     command: |
-      # Initialize mise for current session
       if command -v mise >/dev/null 2>&1; then
         eval "$(mise activate bash)"
         echo "✅ Mise initialized for installation session"
@@ -22,6 +21,7 @@
         echo "⚠️  Mise not found, will be available after shell restart"
       fi
     description: Initialize mise for current session
+    stdout: true
 
 - link:
     ~/.zshrc:
@@ -61,13 +61,9 @@
     command: |
       echo "Installing Operator Mono Nerd Font..."
       if [[ $(uname) = "Darwin" ]]; then
-        # Install fonts to user Library (no admin required)
         FONT_DIR="$HOME/Library/Fonts"
         mkdir -p "$FONT_DIR"
-
-        # Copy all Operator Mono Nerd Font files
         cp -f fonts/operator-mono-nerd/*.otf "$FONT_DIR/"
-
         echo "✅ Installed $(ls fonts/operator-mono-nerd/*.otf | wc -l | tr -d ' ') Operator Mono Nerd Font variants"
       else
         echo "⚠️  Font installation skipped (not macOS)"
@@ -82,12 +78,8 @@
         echo "Installing Node.js and pnpm with mise..."
         mise use --global node@lts pnpm@latest
         echo "✅ Node.js LTS and pnpm latest installed globally"
-
-        # Install additional useful versions
         mise install node@latest
         echo "✅ Node.js latest version also installed"
-
-        # Set global versions
         mise use --global node@lts pnpm@latest
         echo "✅ Global versions set: node@lts, pnpm@latest"
       else
