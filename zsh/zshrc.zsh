@@ -202,9 +202,20 @@ lazy_load_completions() {
 } &!
 
 # Final PATH additions that might have been missed
+# Add /opt/homebrew/sbin if not already in PATH
+case ":$PATH:" in
+  *":/opt/homebrew/sbin:"*) ;;
+  *) export PATH="/opt/homebrew/sbin:$PATH" ;;
+esac
+
+# Add console-ninja bin if not already in PATH
+case ":$PATH:" in
+  *":$HOME/.console-ninja/.bin:"*) ;;
+  *) export PATH="$HOME/.console-ninja/.bin:$PATH" ;;
+esac
+
+# Add PNPM_HOME if not already in PATH
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
-export PATH="/opt/homebrew/sbin:~/.console-ninja/.bin$PATH"
