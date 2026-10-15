@@ -1,13 +1,13 @@
 {
   "editor.fontSize": 16,
   "editor.fontWeight": "400",
-  "editor.lineHeight": 0,
+  "editor.lineHeight": 1.4,
   "editor.fontLigatures": false,
   "workbench.fontAliasing": "antialiased",
-  "editor.quickSuggestionsDelay": 100,
+  "editor.quickSuggestionsDelay": 30,
   "editor.letterSpacing": 0.5,
   "workbench.editor.tabSizing": "shrink",
-  "html.format.enable": false,
+  "html.format.enable": true,
   "html.format.preserveNewLines": true,
   "files.trimTrailingWhitespace": true,
   "editor.lightbulb.enabled": "off",
@@ -112,7 +112,7 @@
   //   ]
   // },
   "editor.renderWhitespace": "none",
-  "editor.rulers": [100],
+  "editor.rulers": [80, 100],
   "editor.minimap.showSlider": "always",
   "files.associations": {
     ".env*": "makefile"
@@ -159,7 +159,7 @@
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "prompt",
   "typescript.preferences.autoImportFileExcludePatterns": ["@radix-ui"],
-  "typescript.updateImportsOnFileMove.enabled": "prompt",
+  "typescript.updateImportsOnFileMove.enabled": "never",
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "debug.javascript.codelens.npmScripts": "never",
@@ -405,7 +405,7 @@
   },
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": true,
+  "editor.detectIndentation": false,
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -429,12 +429,12 @@
   "editor.fontFamily": "'Operator Mono Lig Book', 'Operator Mono Book', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "files.maxMemoryForLargeFilesMB": 4096,
+  "files.maxMemoryForLargeFilesMB": 8192,
   "security.workspace.trust.untrustedFiles": "open",
   "eslint.debug": false,
   "editor.find.addExtraSpaceOnTop": true,
   "editor.padding.top": 36,
-  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.enabled": false,
   "editor.guides.bracketPairs": true,
   "explorer.confirmDelete": false,
   "explorer.compactFolders": false,
@@ -470,8 +470,17 @@
     },
     "typescript:S6564": {
       "level": "off"
+    },
+    "typescript:S2486": {
+      "level": "off"
+    },
+    "typescript:S3358": {
+      "level": "off"
     }
   },
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "claudeCode.preferredLocation": "sidebar",
+  "claudeCode.hideOnboarding": true,
   "application.shellEnvironmentResolutionTimeout": 30,
   "remote.SSH.experimental.chat": false,
   "svgPreview.autoOpen": false,

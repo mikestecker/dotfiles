@@ -56,7 +56,7 @@ Before `./install`, list what it will do and wait for acceptance:
 
 `make macos` is not part of `./install`. Run it only when the user wants Finder, screenshot, and related defaults changed.
 
-After install, sign in to 1Password, turn on the SSH agent, and run `make ssh-key`. If that cannot see the `Git` item, sign in to `op` and run `make ssh-key` again. Do not run `make ssh-key-create` in that case: a failed lookup would mint a new key.
+After install, sign in to 1Password and unlock the app. The `op` binary is the `1password-cli` cask in `macos/Brewfile`. Settings → Developer → Integrate with 1Password CLI does not install it; turn that on, and turn on Integrate with 1Password SDKs, after the cask is installed. Turn on the SSH agent, leave "Generate SSH config file with bookmarked hosts" off, and run `make ssh-key`. If `op account list` is empty, quit and reopen 1Password. An app that was already running when the cask was installed does not see `op`. Do not run `make ssh-key-create` in that case: a failed lookup would mint a new key.
 
 ### Second computer
 
@@ -74,7 +74,17 @@ git log --oneline HEAD..origin/main
 git diff HEAD...origin/main
 ```
 
-Stop and show the overlap when the working tree is dirty, or when `main` is both ahead of and behind `origin/main`. `git pull --ff-only` refuses a diverged history. If the branch is only ahead, there is nothing to pull. When the user accepts a fast-forward:
+Stop and show the overlap when the working tree is dirty, or when `main` is both ahead of and behind `origin/main`. `git pull --ff-only` refuses a diverged history. If the branch is only ahead, there is nothing to pull.
+
+Read the commits that would come in before changing the machine:
+
+```bash
+git log HEAD..origin/main
+```
+
+Each commit body has an "On the other computer" section. Follow those steps after the fast-forward. They name the commands for that change. Use the generic install below only for paths they do not already cover.
+
+When the user accepts a fast-forward:
 
 ```bash
 git pull --ff-only origin main
@@ -95,6 +105,15 @@ git log -8 --oneline
 ```
 
 Show the diff and a proposed commit message. Leave out private keys, `macos/Brewfile.dump`, `~/.config/1Password/ssh/agent.toml`, shell history, and tokens. Port git-identity edits into `git/set-gitconfig.sh` or `git/work.gitconfig`, not into a copy of `~/.gitconfig`.
+
+The commit body is the note the other computer reads on pull. After the summary, add:
+
+```text
+On the other computer:
+- <command or check>
+```
+
+Name every command that machine should run, including "do not" where a command would mint a key, uninstall packages, or copy a token. If the change needs no command, write "On the other computer: nothing to run."
 
 After the user accepts the diff, commit it. Show `git status` and wait again before `git push`. Never force-push `main`.
 
@@ -129,10 +148,13 @@ GitHub (`mikestecker`) and GitLab (`@mikestecker`) are personal accounts. The wo
 
 On a new Mac:
 
-1. Sign in to 1Password and turn on Settings → Developer → SSH agent.
-2. Leave "Generate SSH config file with bookmarked hosts" off. This repo owns `~/.ssh/config`.
-3. Run `make ssh-key`.
-4. Confirm with `ssh-add -l` on the 1Password agent socket. The fingerprint must stay `SHA256:asczVZUH97ABbsIKh/fFq3xe4ticUP7ABw9z0QR5zJc`.
+1. Install the `1password-cli` cask with the rest of `macos/Brewfile`. Settings → Developer → Integrate with 1Password CLI only connects the app. It does not install `op`.
+2. Sign in to 1Password, unlock it, and turn on Settings → Developer → SSH agent, Integrate with 1Password CLI, and Integrate with 1Password SDKs.
+3. Leave "Generate SSH config file with bookmarked hosts" off. This repo owns `~/.ssh/config`.
+4. If `op account list` is empty, quit and reopen 1Password, then run `op signin`. `make ssh-key` writes `~/.ssh/id_git.pub` from the `Git` item. CLI 2.41 returns that field as one JSON object.
+5. Confirm with `ssh-add -l` on the 1Password agent socket. The fingerprint must stay `SHA256:asczVZUH97ABbsIKh/fFq3xe4ticUP7ABw9z0QR5zJc`.
+
+An existing `~/.ssh/id_ed25519` is not this key unless `ssh-keygen -lf` prints that fingerprint. Back it up under `~/.ssh/backup/` and leave it out of `ssh/config`. Do not rename it to `id_git`.
 
 `~/.config/1Password/ssh/agent.toml` is per machine. The Private vault entry already offers `Git`. Do not commit that file.
 
@@ -169,7 +191,8 @@ Dotbot `backup: true` renames a real file to `name.dotbot-backup.YYYYMMDD-HHMMSS
 
 - Run `./install` or `make brew-restore` to test a one-file edit. Relink with `./install --only link` instead.
 - Replace `macos/Brewfile` with `brew bundle dump`, or run `brew bundle cleanup`.
-- Run `make ssh-key-create` or `op item create --ssh-generate-key` while `~/.ssh/id_git` exists. That mints a key GitHub and GitLab do not trust.
+- Run `make ssh-key-create` or `op item create --ssh-generate-key` while `~/.ssh/id_git` exists or the 1Password item `Git` exists. That mints a key GitHub and GitLab do not trust.
+- Treat Settings → Developer → Integrate with 1Password CLI as the install of `op`. The binary is the `1password-cli` cask.
 - Point `ssh/config` at `id_gitlab`, `id_github`, or `id_bbw`.
 - Load oh-my-zsh syntax highlighting before other plugins. It stays last in `zsh/zshrc.zsh`.
 - Treat `macos/Brewfile.dump` as the package list. It is gitignored.
@@ -182,3 +205,5 @@ Dotbot `backup: true` renames a real file to `name.dotbot-backup.YYYYMMDD-HHMMSS
 - **2026-10:** Dotbot backup is on. `make brew` no longer dumps or uninstalls.
 - **2026-10:** mise replaced asdf, nvm, and rbenv for Node, pnpm, and Python.
 - **2026-10:** `zsh/zshrc.zsh` replaced the optimized and original rc copies.
+- **2026-10:** `op` comes from the `1password-cli` cask. The Developer checkbox only connects an unlocked app. `make ssh-key` reads the `Git` item and writes `id_git.pub`.
+- **2026-10:** Commit bodies tell the other computer what to run. A pull reads those notes before installing.

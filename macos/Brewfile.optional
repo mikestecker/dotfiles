@@ -6,32 +6,48 @@
 # - fontsmoothingadjuster: last release 2022, for a font-smoothing control Apple removed.
 # - speedtest-cli: deprecated 2026-01-18.
 # - cask: Emacs package manager, not Homebrew Cask.
-# - node, pnpm, yarn, nvm, python: mise already provides them.
+# - node, pnpm, yarn, nvm, python, asdf, rbenv: mise already provides them.
+# - neofetch: deprecated 2025-05-04. fastfetch is in macos/Brewfile.
+# - docker formula: the docker-desktop cask in macos/Brewfile provides Docker.
+# - zsh-autosuggestions, zsh-completions, zsh-history-substring-search,
+#   zsh-syntax-highlighting: zsh/zshrc.zsh loads these from zgenom.
 
 brew "aria2" # Download manager, including torrents
 brew "httrack" # Save a copy of a website locally
+brew "mysql" # MySQL database server
+brew "openjdk@17" # Java 17 for Android and other JDK tools
+brew "osv-scanner" # Scan dependencies for known vulnerabilities
+brew "qemu" # Machine emulator and virtualizer
 brew "sherlock" # Find social accounts for a username
 brew "streamlink" # Play online video streams
 brew "testdisk" # Recover lost partitions and files
 brew "yt-dlp" # Download video and audio
 
+cask "android-commandlinetools" # Android SDK command-line tools
+cask "android-platform-tools" # adb and the rest of the Android platform tools
 cask "arc" # Chromium browser
+cask "balenaetcher" # Flash OS images to SD cards and USB drives
 cask "bartender" # Hide and organize menu bar icons
 cask "betterdisplay" # Extra display resolutions and settings
 cask "brave-browser" # Privacy-focused browser
+cask "calibre" # E-book library
 cask "discord" # Voice and text chat
 cask "dropbox" # File sync
 cask "firefox" # Browser
 cask "github" # GitHub Desktop
+cask "grok-bot" # Grok desktop app
 cask "handbrake-app" # Convert video files
 cask "istat-menus" # Menu bar CPU, memory, and network meters
 cask "jordanbaird-ice" # Hide menu bar icons
+cask "mactex-no-gui" # TeX Live without the GUI apps
 cask "ngrok" # Expose a local server to the internet
 cask "notion" # Notes and docs
 cask "obsidian" # Local Markdown notes
 cask "onyx" # macOS maintenance and cleanup
+cask "plex" # Home media player
 cask "postico" # PostgreSQL client
 cask "postman" # API client
 cask "raycast" # Keyboard launcher and snippets
+cask "transmit" # File transfer
 cask "vlc" # Media player
 cask "warp" # Terminal

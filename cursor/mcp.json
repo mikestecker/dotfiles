@@ -8,6 +8,19 @@
       "url": "https://mcp.context7.com/mcp",
       "headers": {}
     },
+    "better-auth": {
+      "url": "https://mcp.inkeep.com/better-auth/mcp",
+      "headers": {}
+    },
+    "turbostarter": {
+      "url": "https://www.turbostarter.dev/mcp"
+    },
+    "stripe": {
+      "url": "https://mcp.stripe.com"
+    },
+    "claude-design": {
+      "url": "https://api.anthropic.com/v1/design/mcp"
+    },
     "console-ninja": {
       "command": "node",
       "args": [

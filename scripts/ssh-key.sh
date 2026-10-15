@@ -40,7 +40,7 @@ item_exists() {
 
 public_key() {
   op item get "$TITLE" --fields 'label=public key' --format json \
-    | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["value"])'
+    | python3 -c 'import json,sys; data=json.load(sys.stdin); print((data[0] if isinstance(data, list) else data)["value"])'
 }
 
 write_pub() {
