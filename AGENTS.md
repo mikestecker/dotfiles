@@ -82,7 +82,7 @@ Read the commits that would come in before changing the machine:
 git log HEAD..origin/main
 ```
 
-Each commit body has an "On the other computer" section. Follow those steps after the fast-forward. They name the commands for that change. Use the generic install below only for paths they do not already cover.
+Each commit body has two sections: "Installing from scratch" and "Updating and syncing". Read both. Follow "Installing from scratch" when this Mac has no clone yet or the user is setting the machine up from nothing. Follow "Updating and syncing" when this repo is already installed and the task is to pull. Those steps name the commands for that change. Use the generic install below only for paths they do not already cover.
 
 When the user accepts a fast-forward:
 
@@ -106,14 +106,17 @@ git log -8 --oneline
 
 Show the diff and a proposed commit message. Leave out private keys, `macos/Brewfile.dump`, `~/.config/1Password/ssh/agent.toml`, shell history, and tokens. Port git-identity edits into `git/set-gitconfig.sh` or `git/work.gitconfig`, not into a copy of `~/.gitconfig`.
 
-The commit body is the note the other computer reads on pull. After the summary, add:
+The commit body is the note the other computer reads on pull. After the summary, add both sections:
 
 ```text
-On the other computer:
-- <command or check>
+Installing from scratch:
+- <command or check for a machine that is not set up yet>
+
+Updating and syncing:
+- <command or check for a machine that already has this repo>
 ```
 
-Name every command that machine should run, including "do not" where a command would mint a key, uninstall packages, or copy a token. If the change needs no command, write "On the other computer: nothing to run."
+Name every command that machine should run, including "do not" where a command would mint a key, uninstall packages, or copy a token. If a case needs no command, write "nothing to run."
 
 After the user accepts the diff, commit it. Show `git status` and wait again before `git push`. Never force-push `main`.
 
@@ -206,4 +209,4 @@ Dotbot `backup: true` renames a real file to `name.dotbot-backup.YYYYMMDD-HHMMSS
 - **2026-10:** mise replaced asdf, nvm, and rbenv for Node, pnpm, and Python.
 - **2026-10:** `zsh/zshrc.zsh` replaced the optimized and original rc copies.
 - **2026-10:** `op` comes from the `1password-cli` cask. The Developer checkbox only connects an unlocked app. `make ssh-key` reads the `Git` item and writes `id_git.pub`.
-- **2026-10:** Commit bodies tell the other computer what to run. A pull reads those notes before installing.
+- **2026-10:** Commit bodies tell the other computer what to run, in two sections: installing from scratch, and updating and syncing. A pull reads both before installing.
