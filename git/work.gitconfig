@@ -2,7 +2,7 @@
 # signingkey is the public key written by ./scripts/ssh-key.sh. The private key stays in 1Password.
 [user]
 	email = mistecker@bbw.com
-	signingkey = ~/.ssh/id_gitlab.pub
+	signingkey = ~/.ssh/id_git.pub
 [commit]
 	gpgsign = true
 [gpg]

@@ -4,12 +4,12 @@
 install:
 	./install
 
-# Show the GitLab public key. Create the GitHub key once with: ./scripts/ssh-key.sh create github
+# Show the public key used for both GitLab and GitHub.
 ssh-key:
-	./scripts/ssh-key.sh show gitlab
+	./scripts/ssh-key.sh show
 
 ssh-key-create:
-	./scripts/ssh-key.sh create gitlab
+	./scripts/ssh-key.sh create
 
 link:
 	./install --only link

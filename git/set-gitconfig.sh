@@ -63,7 +63,7 @@ git config --global alias.add-upstream "!zsh -ic add-upstream" # Add the upstrea
 git config --global alias.trav "!zsh -ic git-trav" # Travel to a branch
 
 # SSH commit signing. Personal commits stay unsigned.
-# ~/Development/Current uses the work email and the BBW key on this machine.
+# ~/Development/Current uses the work email and signs with the shared Git key.
 git config --global gpg.format ssh
 git config --global "includeIf.gitdir:~/Development/Current/.path" "$HOME/.dotfiles/git/work.gitconfig"
 

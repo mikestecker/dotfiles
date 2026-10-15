@@ -1,15 +1,19 @@
-# Private keys stay in 1Password. Run ./scripts/ssh-key.sh to write a public key.
+# One key for GitLab and GitHub. Run ./scripts/ssh-key.sh to write the public key.
+# The private file is only a fallback while it still exists on this Mac.
+# A new computer signs with the 1Password agent and id_git.pub.
 
 Host gitlab.com
   Hostname gitlab.com
   PreferredAuthentications publickey
   IdentitiesOnly yes
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-  IdentityFile ~/.ssh/id_gitlab.pub
+  IdentityFile ~/.ssh/id_git
+  IdentityFile ~/.ssh/id_git.pub
 
 Host github.com
   Hostname github.com
   PreferredAuthentications publickey
   IdentitiesOnly yes
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-  IdentityFile ~/.ssh/id_github.pub
+  IdentityFile ~/.ssh/id_git
+  IdentityFile ~/.ssh/id_git.pub
