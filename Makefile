@@ -1,4 +1,4 @@
-.PHONY: install link vscode-install vscode-save brew brew-restore brew-restore-fresh macos dev-setup migrate
+.PHONY: install link vscode-install vscode-save brew brew-optional brew-restore brew-restore-fresh macos dev-setup migrate
 
 # Run dotbot install script (includes Xcode Command Line Tools check)
 install:
@@ -7,18 +7,24 @@ install:
 link:
 	./install --only link
 
-# Install extensions from vscode/extensions.txt
+# Install shared extensions into Cursor and VS Code
 vscode-install:
-	cat ${DOTFILES}/vscode/extensions.txt | xargs -L 1 code --install-extension
+	./scripts/sync-editor-extensions.sh
 
-# Save all current extensions to vscode/extensions.txt
+# vscode/extensions.txt is the union of both editors, with editor-specific ids commented at the bottom.
 vscode-save:
-	code --list-extensions > ${DOTFILES}/vscode/extensions.txt
+	@echo "Refresh vscode/extensions.txt from: cursor --list-extensions and code --list-extensions"
+	@echo "Keep the Cursor only and VS Code only sections commented at the bottom."
 
-# Save snapshot of all Homebrew packages to macos/Brewfile
+# Save snapshot of Homebrew packages. Skips editor extensions (those live in vscode/extensions.txt).
+# Optional packages stay in macos/Brewfile.optional and are not uninstalled by cleanup.
 brew:
-	brew bundle dump -f --file=macos/Brewfile
-	brew bundle --force cleanup --file=macos/Brewfile
+	HOMEBREW_BUNDLE_DUMP_NO_VSCODE=1 brew bundle dump -f --file=macos/Brewfile
+	./macos/install-optional-brews.sh --after-dump
+
+# Ask before installing each personal package in macos/Brewfile.optional
+brew-optional:
+	./macos/install-optional-brews.sh
 
 # Restore Homebrew packages
 brew-restore:
@@ -27,6 +33,7 @@ brew-restore:
 	brew upgrade
 	brew install mas
 	brew bundle install --file=macos/Brewfile
+	./macos/install-optional-brews.sh
 	brew cleanup
 
 # Restore Homebrew packages without cache (for fresh installs/testing)
@@ -42,6 +49,7 @@ macos:
 # Quick development environment setup
 dev-setup:
 	brew bundle install --file=macos/Brewfile
+	./macos/install-optional-brews.sh
 	./macos/set-defaults.sh
 
 # Migrate existing installation from asdf to mise

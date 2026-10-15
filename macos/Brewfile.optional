@@ -1,0 +1,33 @@
+# Personal-machine packages. Homebrew setup asks before installing each one.
+# A work machine can answer n to every prompt.
+#
+# Left out on purpose:
+# - macdown: disabled 2026-09-01 (fails Gatekeeper; Intel-only). Successor is macdown-3000.
+# - fontsmoothingadjuster: last release 2022, for a font-smoothing control Apple removed.
+# - speedtest-cli: deprecated 2026-01-18.
+# - cask: Emacs package manager, not Homebrew Cask.
+# - node, pnpm, yarn, nvm: mise already provides Node and pnpm.
+
+brew "aria2" # Download manager, including torrents
+brew "httrack" # Save a copy of a website locally
+brew "sherlock" # Find social accounts for a username
+brew "streamlink" # Play online video streams
+brew "testdisk" # Recover lost partitions and files
+brew "yt-dlp" # Download video and audio
+
+cask "arc" # Chromium browser
+cask "bartender" # Hide and organize menu bar icons
+cask "betterdisplay" # Extra display resolutions and settings
+cask "brave-browser" # Privacy-focused browser
+cask "discord" # Voice and text chat
+cask "dropbox" # File sync
+cask "firefox" # Browser
+cask "handbrake-app" # Convert video files
+cask "istat-menus" # Menu bar CPU, memory, and network meters
+cask "jordanbaird-ice" # Hide menu bar icons
+cask "notion" # Notes and docs
+cask "obsidian" # Local Markdown notes
+cask "onyx" # macOS maintenance and cleanup
+cask "raycast" # Keyboard launcher and snippets
+cask "vlc" # Media player
+cask "warp" # Terminal

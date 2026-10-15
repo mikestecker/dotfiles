@@ -7,12 +7,14 @@ alefragnani.project-manager
 andrew-codes.cypress-snippets
 anseki.vscode-color
 anteprimorac.html-end-tag-labels
+anthropic.claude-code
 asvetliakov.snapshot-tools
 austenc.tailwind-docs
 azemoh.one-monokai
 bibhasdn.unique-lines
 bierner.color-info
 bierner.emojisense
+biomejs.biome
 bradlc.vscode-tailwindcss
 britesnow.vscode-toggle-quotes
 burkeholland.simple-react-snippets
@@ -20,6 +22,7 @@ christian-kohler.npm-intellisense
 cmstead.js-codeformer
 cmstead.jsrefactor
 csstools.postcss
+datadog.datadog-vscode
 davidanson.vscode-markdownlint
 dbaeumer.vscode-eslint
 deerawan.vscode-dash
@@ -61,12 +64,10 @@ mgmcdermott.vscode-language-babel
 mikestead.dotenv
 monokai.theme-monokai-pro-vscode
 mrmlnc.vscode-scss
+ms-azuretools.vscode-containers
 ms-azuretools.vscode-docker
 ms-vscode-remote.remote-containers
-ms-vscode-remote.remote-ssh
-ms-vscode-remote.remote-ssh-edit
 ms-vscode.live-server
-ms-vscode.remote-explorer
 ms-vscode.sublime-keybindings
 naumovs.color-highlight
 nrwl.angular-console
@@ -114,3 +115,12 @@ yzhang.markdown-all-in-one
 zh9528.file-size
 zhuangtongfa.material-theme
 zignd.html-css-class-completion
+
+# Cursor only
+# anysphere.remote-ssh
+# anysphere.remote-containers
+
+# VS Code only
+# ms-vscode-remote.remote-ssh
+# ms-vscode-remote.remote-ssh-edit
+# ms-vscode.remote-explorer

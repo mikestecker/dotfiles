@@ -36,15 +36,16 @@
     "command": "composerMode.agent"
   },
   {
-    "key": "cmd+e",
-    "command": "composerMode.background"
-},
-{
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": {
         "text": "\\\r\n"
     },
     "when": "terminalFocus"
+},
+{
+  "key": "alt+cmd+s",
+  "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+  "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
 },
 ]

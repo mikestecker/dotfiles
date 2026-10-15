@@ -50,6 +50,29 @@
       path: vscode/snippets
       force: true
 
+    # Cursor uses the same settings, keybindings, and snippets as VS Code
+    ~/Library/Application Support/Cursor/User:
+      if: '[ `uname` = Darwin ]'
+      glob: true
+      path: vscode/macos/*.json
+      force: true
+      relink: true
+
+    ~/Library/Application Support/Cursor/User/snippets:
+      if: '[ `uname` = Darwin ]'
+      path: vscode/snippets
+      force: true
+
+    ~/.config/mise/config.toml:
+      path: mise/config.toml
+      force: true
+
+- shell:
+  -
+    command: ./scripts/sync-editor-extensions.sh
+    description: Installing shared Cursor and VS Code extensions
+    stdout: true
+
 - shell:
   -
     command: ./scripts/install-fonts.sh

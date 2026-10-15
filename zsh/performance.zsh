@@ -59,6 +59,7 @@ if command -v rbenv >/dev/null 2>&1 && [[ -z "$RBENV_SHELL" ]]; then
   }
 fi
 
+# Homebrew bin comes before mise shims, so node, pnpm, and python3 resolve to Homebrew.
 # Optimize PATH building - avoid duplicates and minimize PATH manipulations
 build_optimized_path() {
   local new_path=""

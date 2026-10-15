@@ -86,6 +86,9 @@ if type brew > /dev/null 2>&1; then
 
   echo "Installing brewfile..."
   brew bundle --file=macos/Brewfile
+
+  echo "Optional packages..."
+  ./macos/install-optional-brews.sh
 else
   echo "⚠️  Homebrew not available, skipping package installation"
   echo "📝 Please install Homebrew manually and re-run: make install"

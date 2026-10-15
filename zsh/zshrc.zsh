@@ -58,7 +58,6 @@ if ! zgenom saved; then
 
     # Essential plugins (lightweight first)
     zgenom ohmyzsh plugins/git
-    zgenom ohmyzsh plugins/asdf
     zgenom load romkatv/powerlevel10k powerlevel10k
 
     # Heavy plugins (defer if possible)

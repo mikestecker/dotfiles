@@ -1,13 +1,13 @@
 {
   "editor.fontSize": 16,
   "editor.fontWeight": "400",
-  "editor.lineHeight": 1.4,
+  "editor.lineHeight": 0,
   "editor.fontLigatures": false,
   "workbench.fontAliasing": "antialiased",
-  "editor.quickSuggestionsDelay": 30,
+  "editor.quickSuggestionsDelay": 100,
   "editor.letterSpacing": 0.5,
   "workbench.editor.tabSizing": "shrink",
-  "html.format.enable": true,
+  "html.format.enable": false,
   "html.format.preserveNewLines": true,
   "files.trimTrailingWhitespace": true,
   "editor.lightbulb.enabled": "off",
@@ -59,27 +59,13 @@
       ]
     },
     "textMateRules": [
-      {
-        "name": "envKeys",
-        "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
-        "settings": {
-          "foreground": "#19354900"
+        {
+          "name": "envKeys",
+          "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
+          "settings": {
+            "foreground": "#19354900"
+          }
         }
-      },
-      {
-        "name": "envKeys",
-        "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
-        "settings": {
-          "foreground": "#19354900"
-        }
-      },
-      {
-        "name": "envKeys",
-        "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
-        "settings": {
-          "foreground": "#19354900"
-        }
-      }
     ]
   },
   // "editor.tokenColorCustomizations": {
@@ -126,13 +112,15 @@
   //   ]
   // },
   "editor.renderWhitespace": "none",
-  "editor.rulers": [80, 100],
+  "editor.rulers": [100],
   "editor.minimap.showSlider": "always",
   "files.associations": {
     ".env*": "makefile"
   },
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
+    "typescript": "javascriptreact",
+    "typescriptreact": "javascriptreact",
     "twig": "html"
   },
   // this lets you quick open multiple items in a row and now have the previous ones closed on you
@@ -140,6 +128,7 @@
   // prettier
   "prettier.singleQuote": true,
   "prettier.printWidth": 70,
+  "prettier.requireConfig": true,
   // These are all my auto-save configs
   "editor.formatOnSave": false,
   // turn it off for JS
@@ -170,13 +159,16 @@
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "prompt",
   "typescript.preferences.autoImportFileExcludePatterns": ["@radix-ui"],
-  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescript.updateImportsOnFileMove.enabled": "prompt",
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "debug.javascript.codelens.npmScripts": "never",
   // auto generated
   "explorer.confirmDragAndDrop": false,
-  "js/ts.implicitProjectConfig.checkJs": true,
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
+  "js/ts.implicitProjectConfig.checkJs": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.linkedEditing": true,
   "extensions.ignoreRecommendations": true,
   "editor.inlineSuggest.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -265,6 +257,7 @@
     "acdcorp",
     "Apdex",
     "backend",
+    "bezier",
     "browserslist",
     "camo",
     "cloudinary",
@@ -292,6 +285,7 @@
     "refetch",
     "rerender",
     "rerendered",
+    "rgba",
     "semibold",
     "Signin",
     "Signout",
@@ -359,7 +353,11 @@
     "**/.git/subtree-cache/**": true,
     "**/node_modules/**": true,
     "**/tmp/**": true,
-    "**/dist/**": true
+    "**/dist/**": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true,
+    "**/storybook-static/**": true,
+    "**/.pnpm-store/**": true
   },
   "search.exclude": {
     "**/.git/objects/**": true,
@@ -369,13 +367,20 @@
     "**/node_modules/**": true,
     "**/tmp/**": true,
     "package-lock.json": true,
-    "yarn.lock": true
+    "yarn.lock": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true,
+    "**/storybook-static/**": true,
+    "pnpm-lock.yaml": true
   },
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": false,
   "search.followSymlinks": false,
   "beautify.config": "",
   "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
@@ -400,7 +405,7 @@
   },
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": false,
+  "editor.detectIndentation": true,
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -424,12 +429,12 @@
   "editor.fontFamily": "'Operator Mono Lig Book', 'Operator Mono Book', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "files.maxMemoryForLargeFilesMB": 8192,
+  "files.maxMemoryForLargeFilesMB": 4096,
   "security.workspace.trust.untrustedFiles": "open",
-  "eslint.debug": true,
+  "eslint.debug": false,
   "editor.find.addExtraSpaceOnTop": true,
   "editor.padding.top": 36,
-  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.enabled": true,
   "editor.guides.bracketPairs": true,
   "explorer.confirmDelete": false,
   "explorer.compactFolders": false,
@@ -445,9 +450,40 @@
   },
   "redhat.telemetry.enabled": false,
   "errorLens.gutterIconsEnabled": true,
-  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.local/share/mise/installs/node/22.19.0/bin/node",
+  "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.local/share/mise/installs/node/lts/bin/node",
   "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
   "editor.lineNumbers": "on",
   "terminal.external.osxExec": "iTerm.app",
-  "console-ninja.featureSet": "Community"
+  "console-ninja.featureSet": "Community",
+  "sonarlint.rules": {
+    "typescript:S2933": {
+      "level": "off"
+    },
+    "typescript:S4325": {
+      "level": "off"
+    },
+    "typescript:S3776": {
+      "level": "off"
+    },
+    "typescript:S6759": {
+      "level": "off"
+    },
+    "typescript:S1764": {
+      "level": "off"
+    },
+    "typescript:S6564": {
+      "level": "off"
+    }
+  },
+  "application.shellEnvironmentResolutionTimeout": 30,
+  "remote.SSH.experimental.chat": false,
+  "svgPreview.autoOpen": false,
+  "svgPreview.style": {},
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
+  "window.autoDetectColorScheme": false,
+  "js/ts.tsserver.maxMemory": 6144,
+  "typescript.tsserver.maxTsServerMemory": 6144,
+  "cursor.composer.queueMessageDefaultBehavior": "steer"
 }
