@@ -10,7 +10,10 @@ if ! xcode-select -p &> /dev/null; then
   xcode-select --install
   echo "Please complete the Xcode Command Line Tools installation in the dialog that appeared."
   echo "Press any key to continue after installation is complete..."
-  read -n 1 -s
+  if ! read -n 1 -s </dev/tty; then
+    echo "No terminal available. Finish the Xcode Command Line Tools install, then re-run this script."
+    exit 1
+  fi
 else
   echo "✓ Xcode Command Line Tools already installed"
 fi

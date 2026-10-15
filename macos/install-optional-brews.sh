@@ -26,9 +26,9 @@ installed() {
   local token="$2"
   local short="${token##*/}"
   if [[ "$kind" == "cask" ]]; then
-    brew list --cask "$short" >/dev/null 2>&1
+    brew list --cask "$short" </dev/null >/dev/null 2>&1
   else
-    brew list --formula "$short" >/dev/null 2>&1
+    brew list --formula "$short" </dev/null >/dev/null 2>&1
   fi
 }
 
@@ -81,14 +81,19 @@ while IFS=$'\t' read -r kind token desc; do
     continue
   fi
 
-  printf 'Install %s — %s? [y/N] ' "$short" "$desc"
-  read -r answer
+  # The loop's stdin is the package list, so the prompt and answer use the terminal.
+  printf 'Install %s — %s? [y/N] ' "$short" "$desc" >/dev/tty
+  if ! read -r answer </dev/tty; then
+    echo
+    echo "Stopped. Remaining packages were not installed."
+    exit 0
+  fi
   case "$answer" in
     y|Y|yes|YES)
       if [[ "$kind" == "cask" ]]; then
-        brew install --cask "$token" || echo "Failed to install $token"
+        brew install --cask "$token" </dev/tty || echo "Failed to install $token"
       else
-        brew install "$token" || echo "Failed to install $token"
+        brew install "$token" </dev/tty || echo "Failed to install $token"
       fi
       ;;
     *)
