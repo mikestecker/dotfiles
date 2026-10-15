@@ -2,8 +2,9 @@
 set -e  # Exit on error
 # shellcheck disable=SC2016
 
-# Name
+# Name and personal email. Work checkouts override this via includeIf.
 git config --global user.name "Mike Stecker"
+git config --global user.email "mike@stecker.me"
 
 # Set git global settings
 git config --global core.autocrlf false # Don't convert line endings
@@ -24,10 +25,10 @@ git config --global alias.unstage 'reset HEAD --' # Unstage changes
 git config --global alias.hist 'log --oneline --graph --decorate --all' # Show the commit history
 git config --global alias.stu 'status -uno' # Show the status of the working directory
 git config --global alias.st 'status' # Show the status of the repository
-git config --global alias.unp 'log origin/master..HEAD' # Show the changes that have been pushed
+git config --global alias.unp 'log origin/main..HEAD' # Show the changes that have been pushed
 git config --global alias.subup 'submodule update --remote --merge' # Update the submodules
 git config --global alias.aliases "config --get-regexp '^alias\.'" # Show the aliases
-git config --global alias.pom 'push origin master' # Push to the master branch
+git config --global alias.pom 'push origin main' # Push to the main branch
 git config --global alias.undolast 'reset HEAD~1' # Reset the last commit
 git config --global alias.revertlast 'revert HEAD' # Revert the last commit
 git config --global alias.editlast 'commit --amend -m' # Edit the last commit
@@ -61,12 +62,10 @@ git config --global alias.sync "!zsh -ic git-sync" # Sync the repository
 git config --global alias.add-upstream "!zsh -ic add-upstream" # Add the upstream branch
 git config --global alias.trav "!zsh -ic git-trav" # Travel to a branch
 
-# Check for git email configuration
-if [[ -z $(git config --global --get user.email) ]]; then
-  echo "⚠️  Git email not configured."
-  echo "📧 To set your email, run: git config --global user.email 'your-email@example.com'"
-  echo "✅ Installation continuing..."
-fi
+# SSH commit signing. Personal commits stay unsigned.
+# ~/Development/Current uses the work email and the BBW key on this machine.
+git config --global gpg.format ssh
+git config --global "includeIf.gitdir:~/Development/Current/.path" "$HOME/.dotfiles/git/work.gitconfig"
 
 # Delta
 

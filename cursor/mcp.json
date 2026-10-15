@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "Figma Desktop": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "headers": {}
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {}
+    },
+    "console-ninja": {
+      "command": "node",
+      "args": [
+        "~/.console-ninja/mcp/"
+      ]
+    }
+  }
+}

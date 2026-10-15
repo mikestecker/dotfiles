@@ -59,16 +59,16 @@ if command -v rbenv >/dev/null 2>&1 && [[ -z "$RBENV_SHELL" ]]; then
   }
 fi
 
-# Homebrew bin comes before mise shims, so node, pnpm, and python3 resolve to Homebrew.
+# Mise shims come before Homebrew so node and pnpm follow mise, not brew.
 # Optimize PATH building - avoid duplicates and minimize PATH manipulations
 build_optimized_path() {
   local new_path=""
   local paths=(
     "$HOME/bin"
+    "$HOME/.local/share/mise/shims"
     "$HOMEBREW_PREFIX/bin"
     "$HOMEBREW_COREUTILS"
     "$HOMEBREW_PREFIX/opt/python@3.12/libexec/bin"
-    "$HOME/.local/share/mise/shims"
     "$PNPM_HOME"
     "$BUN_INSTALL/bin"
     "/usr/bin"

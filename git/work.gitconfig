@@ -1,0 +1,9 @@
+# Applied for repositories under ~/Development/Current.
+# signingkey is the public key written by ./scripts/ssh-key.sh. The private key stays in 1Password.
+[user]
+	email = mistecker@bbw.com
+	signingkey = ~/.ssh/id_bbw.pub
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh

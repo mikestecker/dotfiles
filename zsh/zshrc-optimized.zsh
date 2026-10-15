@@ -14,18 +14,24 @@ export GPG_TTY=$TTY
 source "$DOTFILES/zsh/performance.zsh"
 
 # Essential environment variables
-# Mise activation - modern replacement for asdf
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
-fi
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 export EDITOR="/Applications/Cursor.app/Contents/MacOS/Cursor -nw"
 export LANG=en_US.UTF-8
 export DEFAULT_USER="$USER"
 
-# Build optimized PATH once
+# Build optimized PATH once, then activate mise so shims stay in front.
 build_optimized_path
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+# Git signing and GitLab/GitHub use the 1Password SSH agent when it is enabled.
+op_ssh_agent="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+if [[ -S "$op_ssh_agent" ]]; then
+  export SSH_AUTH_SOCK="$op_ssh_agent"
+fi
+unset op_ssh_agent
 
 # ZSH options (lightweight)
 setopt AUTO_CD EXTENDED_HISTORY CORRECT NO_CASE_GLOB NUMERIC_GLOB_SORT

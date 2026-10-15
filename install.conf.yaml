@@ -67,6 +67,32 @@
       path: mise/config.toml
       force: true
 
+    ~/.gitignore:
+      path: git/gitignore
+      force: true
+
+    ~/.ssh/config:
+      path: ssh/config
+      force: true
+
+    ~/.cursor/mcp.json:
+      path: cursor/mcp.json
+      force: true
+
+    ~/.cursor/skills:
+      path: cursor/skills
+      force: true
+
+    ~/Library/Application Support/iTerm2/DynamicProfiles/profile.json:
+      if: '[ `uname` = Darwin ]'
+      path: iterm2/profile.json
+      force: true
+
+    ~/Library/Application Support/iTerm2/Scripts/AutoLaunch/set-default-profile.py:
+      if: '[ `uname` = Darwin ]'
+      path: iterm2/set-default-profile.py
+      force: true
+
 - shell:
   -
     command: ./scripts/sync-editor-extensions.sh
@@ -92,6 +118,10 @@
     description: Configuring Git
     stdout: true
     quiet: false
+  -
+    command: ./scripts/sync-iterm-profile.sh
+    description: Selecting the synced iTerm profile
+    stdout: true
   -
     command: ./scripts/installation-complete.sh
     description: Installation Complete

@@ -1,8 +1,15 @@
-.PHONY: install link vscode-install vscode-save brew brew-optional brew-restore brew-restore-fresh macos dev-setup migrate
+.PHONY: install link vscode-install vscode-save brew brew-optional brew-restore brew-restore-fresh macos dev-setup migrate ssh-key ssh-key-create
 
 # Run dotbot install script (includes Xcode Command Line Tools check)
 install:
 	./install
+
+# Show the 1Password SSH public key for GitLab and GitHub
+ssh-key:
+	./scripts/ssh-key.sh
+
+ssh-key-create:
+	./scripts/ssh-key.sh create
 
 link:
 	./install --only link

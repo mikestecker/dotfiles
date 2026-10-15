@@ -81,6 +81,7 @@ brew "zsh-history-substring-search"
 brew "zsh-syntax-highlighting"
 
 cask "1password"
+cask "1password-cli"
 cask "cursor"
 cask "docker-desktop"
 cask "figma"
