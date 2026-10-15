@@ -103,15 +103,11 @@ loadtest http://localhost:3000  # HTTP load testing
 
 - **75%+ faster startup** (0.24s vs 0.97s)
 - **Cached expensive operations** (brew prefix, path resolution)
-- **Lazy loading** for NVM, rbenv, and heavy plugins
-- **Background loading** of non-essential components
+- **Lazy loading** for Docker, kubectl, and completions
 
 ```bash
 # Benchmark your shell performance
 ./scripts/benchmark-zsh
-
-# Revert to original configuration if needed
-cp zsh/zshrc-original.zsh zsh/zshrc.zsh
 ```
 
 *See [docs/PERFORMANCE.md](./docs/PERFORMANCE.md) for detailed information*

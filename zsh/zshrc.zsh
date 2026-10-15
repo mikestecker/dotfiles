@@ -40,7 +40,7 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS HIST_VERIFY INC_APPEND_HISTORY SHARE_HISTORY
 setopt PUSHD_IGNORE_DUPS
 
-# History settings
+# History stays in this file on this machine. Do not sync it between laptops.
 HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE=~/.zsh_history
@@ -66,48 +66,59 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/git
     zgenom load romkatv/powerlevel10k powerlevel10k
 
-    # Heavy plugins (defer if possible)
     zgenom load zsh-users/zsh-autosuggestions
-    zgenom load zsh-users/zsh-syntax-highlighting
     zgenom load zsh-users/zsh-history-substring-search
     zgenom load zsh-users/zsh-completions src
 
     # Secondary plugins
     zgenom ohmyzsh plugins/sudo
-    zgenom ohmyzsh plugins/z
     zgenom load jocelynmallon/zshmarks
     zgenom load djui/alias-tips
-
-    # Development plugins (these can be lazy loaded)
-    zgenom ohmyzsh plugins/kubectl
-    zgenom ohmyzsh plugins/docker
-    zgenom ohmyzsh plugins/docker-compose
     zgenom load ntnyq/omz-plugin-pnpm
-
-    # Utility plugins
-    zgenom load denolfe/git-it-on.zsh
-    zgenom load caarlos0/zsh-mkc
-    zgenom load caarlos0/zsh-git-sync
-    zgenom load caarlos0/zsh-add-upstream
-    zgenom load denolfe/zsh-prepend
-    zgenom load andrewferrier/fzf-z
-    zgenom load reegnz/jq-zsh-plugin
 
     # Custom plugins
     zgenom load "$DOTFILES/zsh/globalias.plugin.zsh"
 
-    # Command not found (can be slow)
-    zgenom ohmyzsh plugins/command-not-found
+    # Syntax highlighting must be the last plugin.
+    zgenom load zsh-users/zsh-syntax-highlighting
 
     # Generate init script
     zgenom save
 fi
 
+# Docker and kubectl plugins load on first use.
+_load_omz_plugin() {
+  local plugin="$1"
+  shift
+  local cmd
+  for cmd in "$@"; do
+    unfunction "$cmd" 2>/dev/null
+  done
+  source "$ZSH/plugins/${plugin}/${plugin}.plugin.zsh"
+}
+
+docker() {
+  _load_omz_plugin docker docker
+  _load_omz_plugin docker-compose docker-compose
+  docker "$@"
+}
+
+docker-compose() {
+  _load_omz_plugin docker docker
+  _load_omz_plugin docker-compose docker-compose
+  docker-compose "$@"
+}
+
+kubectl() {
+  _load_omz_plugin kubectl kubectl
+  kubectl "$@"
+}
+
 # Key bindings for history search (after plugins load)
 if [[ -n "${ZSH_VERSION-}" ]]; then
     zmodload zsh/terminfo
-    bindkey "$terminfo[kcuu1]" history-substring-search-up
-    bindkey "$terminfo[kcud1]" history-substring-search-down
+    [[ -n "${terminfo[kcuu1]-}" ]] && bindkey "$terminfo[kcuu1]" history-substring-search-up
+    [[ -n "${terminfo[kcud1]-}" ]] && bindkey "$terminfo[kcud1]" history-substring-search-down
     bindkey "^k" history-substring-search-up
     bindkey "^j" history-substring-search-down
 fi
@@ -190,37 +201,18 @@ lazy_load_completions() {
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 [[ -r ~/.secrets ]] && source ~/.secrets
 
-# Schedule heavy operations to load after prompt
+# Aliases and functions are available at the first prompt.
+lazy_load_dotfiles
+
+# Load iTerm2 integration only if we're in iTerm2.
+if [[ "$TERM_PROGRAM" == "iTerm.app" ]] && [[ -f "$DOTFILES/iterm2/iterm2_shell_integration.zsh" ]]; then
+  source "$DOTFILES/iterm2/iterm2_shell_integration.zsh"
+fi
+
+# Completions can load after the prompt.
 {
-    lazy_load_dotfiles
-    lazy_load_completions
-
-    # Load iTerm2 integration only if we're in iTerm2
-    if [[ "$TERM_PROGRAM" == "iTerm.app" ]] && [[ -f "$DOTFILES/iterm2/iterm2_shell_integration.zsh" ]]; then
-        source "$DOTFILES/iterm2/iterm2_shell_integration.zsh"
-    fi
-
-    # Load completion enhancements
-    if [[ -f "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
-        source "$HOMEBREW_PREFIX/share/zsh/site-functions"
-    fi
+  lazy_load_completions
+  if [[ -f "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
+    source "$HOMEBREW_PREFIX/share/zsh/site-functions"
+  fi
 } &!
-
-# Final PATH additions that might have been missed
-# Add /opt/homebrew/sbin if not already in PATH
-case ":$PATH:" in
-  *":/opt/homebrew/sbin:"*) ;;
-  *) export PATH="/opt/homebrew/sbin:$PATH" ;;
-esac
-
-# Add console-ninja bin if not already in PATH
-case ":$PATH:" in
-  *":$HOME/.console-ninja/.bin:"*) ;;
-  *) export PATH="$HOME/.console-ninja/.bin:$PATH" ;;
-esac
-
-# Add PNPM_HOME if not already in PATH
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac

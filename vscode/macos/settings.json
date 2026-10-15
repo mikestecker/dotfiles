@@ -445,9 +445,6 @@
   "remote.SSH.remotePlatform": {
     "sandbox.h7vxs8.csb": "linux"
   },
-  "yaml.schemas": {
-    "file:///Users/mikestecker/.vscode/extensions/atlassian.atlascode-3.0.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-  },
   "redhat.telemetry.enabled": false,
   "errorLens.gutterIconsEnabled": true,
   "sonarlint.pathToNodeExecutable": "/Users/mikestecker/.local/share/mise/installs/node/lts/bin/node",

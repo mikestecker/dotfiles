@@ -6,7 +6,7 @@
 # - fontsmoothingadjuster: last release 2022, for a font-smoothing control Apple removed.
 # - speedtest-cli: deprecated 2026-01-18.
 # - cask: Emacs package manager, not Homebrew Cask.
-# - node, pnpm, yarn, nvm: mise already provides Node and pnpm.
+# - node, pnpm, yarn, nvm, python: mise already provides them.
 
 brew "aria2" # Download manager, including torrents
 brew "httrack" # Save a copy of a website locally
@@ -22,12 +22,16 @@ cask "brave-browser" # Privacy-focused browser
 cask "discord" # Voice and text chat
 cask "dropbox" # File sync
 cask "firefox" # Browser
+cask "github" # GitHub Desktop
 cask "handbrake-app" # Convert video files
 cask "istat-menus" # Menu bar CPU, memory, and network meters
 cask "jordanbaird-ice" # Hide menu bar icons
+cask "ngrok" # Expose a local server to the internet
 cask "notion" # Notes and docs
 cask "obsidian" # Local Markdown notes
 cask "onyx" # macOS maintenance and cleanup
+cask "postico" # PostgreSQL client
+cask "postman" # API client
 cask "raycast" # Keyboard launcher and snippets
 cask "vlc" # Media player
 cask "warp" # Terminal

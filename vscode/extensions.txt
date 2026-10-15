@@ -54,9 +54,7 @@ jock.svg
 johnpapa.vscode-peacock
 jonkwheeler.styled-components-snippets
 josefbiehler.cypress-fixture-intellisense
-kettanaito.nako
 kisstkondoros.vscode-gutter-preview
-liamhammett.inline-parameters
 mblode.pretty-formatter
 mblode.twig-language-2
 mechatroner.rainbow-csv
@@ -88,11 +86,9 @@ siegebell.scope-info
 simonsiefke.svg-preview
 sleistner.vscode-fileutils
 sonarsource.sonarlint-vscode
-spoonscen.es6-mocha-snippets
 stivo.tailwind-fold
 streetsidesoftware.code-spell-checker
 styled-components.vscode-styled-components
-suming.react-proptypes-generate
 techer.open-in-browser
 tombonnike.vscode-status-bar-format-toggle
 tomoki1207.pdf
@@ -121,6 +117,10 @@ zignd.html-css-class-completion
 # anysphere.remote-containers
 
 # VS Code only
+# kettanaito.nako
+# liamhammett.inline-parameters
 # ms-vscode-remote.remote-ssh
 # ms-vscode-remote.remote-ssh-edit
 # ms-vscode.remote-explorer
+# spoonscen.es6-mocha-snippets
+# suming.react-proptypes-generate

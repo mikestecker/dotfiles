@@ -9,11 +9,8 @@ This document outlines the performance optimizations implemented in the dotfiles
 Current configuration is already optimized! To benchmark or revert:
 
 ```bash
-# Benchmark current performance  
+# Benchmark current performance
 ./scripts/benchmark-zsh
-
-# Revert to original configuration if needed
-cp zsh/zshrc-original.zsh zsh/zshrc.zsh
 
 # Reload shell
 exec zsh
@@ -29,10 +26,9 @@ exec zsh
 
 ### 2. **Lazy Loading**
 
-- **NVM**: Only loads when Node.js commands are used
-- **rbenv**: Only loads when Ruby commands are used
-- **Heavy plugins**: Deferred until after prompt loads
+- **Docker and kubectl**: Load the first time those commands are used
 - **Completions**: Background loaded after shell startup
+- **Node and Python**: Provided by mise, not nvm or a Homebrew python path
 
 ### 3. **PATH Optimization**
 
@@ -67,8 +63,7 @@ Typical improvements:
 ### Core Performance Files
 
 - `zsh/performance.zsh` - Core optimization functions
-- `zsh/zshrc-optimized.zsh` - Optimized main configuration
-- `path/node-optimized.path.sh` - Lazy NVM loading
+- `zsh/zshrc.zsh` - The only shell configuration, linked as `~/.zshrc`
 
 ### Benchmarking
 

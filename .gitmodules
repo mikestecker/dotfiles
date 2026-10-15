@@ -5,6 +5,7 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+	branch = master
 	ignore = dirty
 [submodule "zsh/zgenom"]
 	path = zsh/zgenom

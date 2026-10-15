@@ -1,30 +1,52 @@
 #!/usr/bin/env bash
-# Create or show the SSH public key stored in 1Password.
+# Create or show an SSH public key stored in 1Password.
 # The private key is never written to disk or to this repo.
 set -euo pipefail
 
-TITLE="${SSH_KEY_TITLE:-BBW GitLab}"
-PUB="${SSH_PUB_FILE:-$HOME/.ssh/id_bbw.pub}"
 AGENT_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+ACTION="show"
+HOST_NAME="gitlab"
+TITLE=""
+PUB=""
+LEGACY=""
 
 usage() {
   cat <<EOF
-Usage: ./scripts/ssh-key.sh [show|create]
+Usage: ./scripts/ssh-key.sh [show|create] [gitlab|github]
 
-  show    Print the public key from the "$TITLE" 1Password item and
-          write it to $PUB. Copies it to the clipboard on macOS.
-  create  Create an Ed25519 key in 1Password when that item does not exist,
-          then show the public key.
+  show    Print the public key and write the .pub file. Copies it to the clipboard.
+  create  Create an Ed25519 key in 1Password when that item does not exist.
 
-Paste the public key into GitLab and GitHub. The key item syncs with your
-1Password account. These Developer settings are per Mac and stay out of git:
+  gitlab  1Password item "GitLab", writes ~/.ssh/id_gitlab.pub (default)
+  github  1Password item "GitHub", writes ~/.ssh/id_github.pub
 
-  On:  Use the SSH agent
-  On:  Integrate with 1Password CLI
-  Off: Generate SSH config file with bookmarked hosts
+GitLab and GitHub are personal accounts. A work address is an extra email on
+the account, not a separate key. Create the GitHub key once with:
 
-Leave that last one off. This repo already owns ~/.ssh/config.
+  ./scripts/ssh-key.sh create github
+
+On a new machine, sign in to 1Password and turn on Settings > Developer > SSH agent.
 EOF
+}
+
+select_host() {
+  case "$1" in
+    gitlab)
+      TITLE="GitLab"
+      PUB="$HOME/.ssh/id_gitlab.pub"
+      LEGACY="$HOME/.ssh/id_bbw"
+      ;;
+    github)
+      TITLE="GitHub"
+      PUB="$HOME/.ssh/id_github.pub"
+      LEGACY=""
+      ;;
+    *)
+      echo "Unknown host \"$1\". Use gitlab or github." >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
 }
 
 need_op() {
@@ -64,15 +86,23 @@ Then authorize "$TITLE" for the agent and run this script again.
 EOF
 }
 
+github_hint() {
+  if [[ "$HOST_NAME" == "gitlab" && ! -f "$HOME/.ssh/id_github.pub" ]]; then
+    echo "GitHub key not written yet. Create it once with: ./scripts/ssh-key.sh create github"
+  fi
+}
+
 show_key() {
   need_op
   if ! item_exists; then
     echo "No 1Password item named \"$TITLE\"." >&2
-    if [[ -f "$HOME/.ssh/id_bbw" ]]; then
-      echo "Import the existing key once: 1Password > New Item > SSH Key > Import ~/.ssh/id_bbw, and name it \"$TITLE\"." >&2
+    if [[ -n "$LEGACY" && -f "$LEGACY" ]]; then
+      echo "Import the existing key once: 1Password > New Item > SSH Key > Import $LEGACY, and name it \"$TITLE\"." >&2
       echo "Then run this script again. The key already on GitLab keeps working." >&2
+    elif [[ "$HOST_NAME" == "github" ]]; then
+      echo "Create one with: ./scripts/ssh-key.sh create github" >&2
     else
-      echo "Create one with: ./scripts/ssh-key.sh create" >&2
+      echo "Create one with: ./scripts/ssh-key.sh create gitlab" >&2
     fi
     if [[ -f "$PUB" ]]; then
       echo >&2
@@ -88,10 +118,11 @@ show_key() {
   printf '%s\n' "$key"
   if command -v pbcopy >/dev/null 2>&1; then
     printf '%s\n' "$key" | pbcopy
-    echo "Copied to the clipboard. Paste it into GitLab and GitHub."
+    echo "Copied to the clipboard. Paste it into ${HOST_NAME}."
   fi
   echo "Public key written to $PUB"
   agent_hint
+  github_hint
 }
 
 create_key() {
@@ -106,12 +137,24 @@ create_key() {
   show_key
 }
 
-case "${1:-show}" in
+for arg in "$@"; do
+  case "$arg" in
+    show|create) ACTION="$arg" ;;
+    gitlab|github) HOST_NAME="$arg" ;;
+    -h|--help|help)
+      usage
+      exit 0
+      ;;
+    *)
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+select_host "$HOST_NAME"
+
+case "$ACTION" in
   show) show_key ;;
   create) create_key ;;
-  -h|--help|help) usage ;;
-  *)
-    usage >&2
-    exit 1
-    ;;
 esac

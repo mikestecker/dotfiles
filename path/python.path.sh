@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-# Only sourced by zshrc-original.zsh. Active zshrc uses Homebrew python3 (python@3.15).
-export PATH="$PATH:/opt/homebrew/opt/python@3.12/libexec/bin"
+# Unused by the active zshrc. Python comes from mise (python = "3.13").
+# Kept so an older shell that still sources this file does not put Homebrew
+# Python ahead of the mise shim.

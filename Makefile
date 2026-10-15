@@ -1,15 +1,15 @@
-.PHONY: install link vscode-install vscode-save brew brew-optional brew-restore brew-restore-fresh macos dev-setup migrate ssh-key ssh-key-create
+.PHONY: install link vscode-install vscode-save brew brew-dump brew-optional brew-restore brew-restore-fresh macos dev-setup migrate ssh-key ssh-key-create
 
 # Run dotbot install script (includes Xcode Command Line Tools check)
 install:
 	./install
 
-# Show the 1Password SSH public key for GitLab and GitHub
+# Show the GitLab public key. Create the GitHub key once with: ./scripts/ssh-key.sh create github
 ssh-key:
-	./scripts/ssh-key.sh
+	./scripts/ssh-key.sh show gitlab
 
 ssh-key-create:
-	./scripts/ssh-key.sh create
+	./scripts/ssh-key.sh create gitlab
 
 link:
 	./install --only link
@@ -23,11 +23,16 @@ vscode-save:
 	@echo "Refresh vscode/extensions.txt from: cursor --list-extensions and code --list-extensions"
 	@echo "Keep the Cursor only and VS Code only sections commented at the bottom."
 
-# Save snapshot of Homebrew packages. Skips editor extensions (those live in vscode/extensions.txt).
-# Optional packages stay in macos/Brewfile.optional and are not uninstalled by cleanup.
+# macos/Brewfile is curated by hand. This does not dump or uninstall packages.
 brew:
-	HOMEBREW_BUNDLE_DUMP_NO_VSCODE=1 brew bundle dump -f --file=macos/Brewfile
-	./macos/install-optional-brews.sh --after-dump
+	@echo "macos/Brewfile is curated. Edit it by hand."
+	@echo "Optional packages: make brew-optional"
+	@echo "Inspect everything Homebrew has installed: make brew-dump"
+
+# Write an untracked snapshot. It is not the install list.
+brew-dump:
+	HOMEBREW_BUNDLE_DUMP_NO_VSCODE=1 brew bundle dump -f --file=macos/Brewfile.dump
+	@echo "Wrote macos/Brewfile.dump (gitignored)."
 
 # Ask before installing each personal package in macos/Brewfile.optional
 brew-optional:

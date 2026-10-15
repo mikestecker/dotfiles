@@ -1,5 +1,6 @@
 alfred
 cache
+macos/Brewfile.dump
 nvim/plugged
 nvim/.netrwhist
 alfred/Alfred.alfredpreferences/remote

@@ -2,6 +2,9 @@
     link:
       relink: true
       create: true
+      # Rename a real file or directory to name.dotbot-backup.YYYYMMDD-HHMMSS
+      # before replacing it. Existing symlinks are left for relink.
+      backup: true
 
 - clean: ['~', '~/bin']
 

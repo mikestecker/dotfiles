@@ -1,15 +1,15 @@
-# Private keys stay in 1Password. Run ./scripts/ssh-key.sh to write the public key.
+# Private keys stay in 1Password. Run ./scripts/ssh-key.sh to write a public key.
 
 Host gitlab.com
   Hostname gitlab.com
   PreferredAuthentications publickey
   IdentitiesOnly yes
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-  IdentityFile ~/.ssh/id_bbw.pub
+  IdentityFile ~/.ssh/id_gitlab.pub
 
 Host github.com
   Hostname github.com
   PreferredAuthentications publickey
   IdentitiesOnly yes
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-  IdentityFile ~/.ssh/id_bbw.pub
+  IdentityFile ~/.ssh/id_github.pub
