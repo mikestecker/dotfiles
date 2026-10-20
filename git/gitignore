@@ -6,3 +6,5 @@
 .cursor/*
 !.cursor/rules/
 !.cursor/rules/**
+
+**/.claude/settings.local.json

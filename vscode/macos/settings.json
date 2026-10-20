@@ -374,7 +374,7 @@
     "pnpm-lock.yaml": true
   },
   "extensions.autoCheckUpdates": false,
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": "off",
   "search.followSymlinks": false,
   "beautify.config": "",
   "[json]": {
@@ -486,10 +486,66 @@
   "svgPreview.autoOpen": false,
   "svgPreview.style": {},
   "workbench.editorAssociations": {
-    "*.svg": "default"
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.svg": "default",
+    "*.md": "vscode.markdown.preview.editor"
   },
   "window.autoDetectColorScheme": false,
   "js/ts.tsserver.maxMemory": 6144,
   "typescript.tsserver.maxTsServerMemory": 6144,
-  "cursor.composer.queueMessageDefaultBehavior": "steer"
+  "cursor.composer.queueMessageDefaultBehavior": "steer",
+  // URL fetch: true = auto-approve request and response (trusted docs).
+  // Object with approveResponse false = fetch without prompting, still review page text.
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://docs.github.com": true,
+    "https://docs.gitlab.com": true,
+    "https://docs.datadoghq.com": true,
+    "https://docs.sonarsource.com": true,
+    "https://developers.figma.com": true,
+    "https://storybook.js.org": true,
+    "https://*.chromatic.com": true,
+    "https://cursor.com": true,
+    "https://code.claude.com": true,
+    "https://github.com": {
+      "approveRequest": true,
+      "approveResponse": false
+    },
+    "https://api.github.com": {
+      "approveRequest": true,
+      "approveResponse": false
+    },
+    "https://raw.githubusercontent.com": {
+      "approveRequest": true,
+      "approveResponse": false
+    },
+    "https://gitlab.com": {
+      "approveRequest": true,
+      "approveResponse": false
+    },
+    "https://agentskills.io": {
+      "approveRequest": true,
+      "approveResponse": false
+    },
+    "https://*.skills.sh": {
+      "approveRequest": true,
+      "approveResponse": false
+    }
+  },
+  "remote.defaultExtensionsIfInstalledLocally": [
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "GitHub.vscode-pull-request-github"
+  ],
+  "better-todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "better-todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "sonarlint.automaticAnalysis": false
 }

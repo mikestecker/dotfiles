@@ -162,6 +162,9 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# -X keeps less out of the alternate screen (it crashes VS Code's terminal tool); -F quits on one screen
+export LESS='-FRX'
+
 # Lazy load aliases and functions using a more efficient method
 lazy_load_dotfiles() {
     # Load aliases

@@ -4,7 +4,7 @@
 
 # bat (better cat with syntax highlighting)
 if type bat > /dev/null 2>&1; then
-  alias cat='bat'
+  alias cat='bat --paging=never'
   alias ccat='bat --color=always'          # Force colored output
   alias bcat='bat --style=plain'           # Plain output (no line numbers/git)
   alias batl='bat --list-languages'        # List supported languages

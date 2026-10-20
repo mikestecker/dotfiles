@@ -5,10 +5,8 @@ albymor.increment-selection
 alefragnani.bookmarks
 alefragnani.project-manager
 andrew-codes.cypress-snippets
-anseki.vscode-color
 anteprimorac.html-end-tag-labels
 anthropic.claude-code
-asvetliakov.snapshot-tools
 austenc.tailwind-docs
 azemoh.one-monokai
 bibhasdn.unique-lines
@@ -17,25 +15,20 @@ bierner.emojisense
 biomejs.biome
 bradlc.vscode-tailwindcss
 britesnow.vscode-toggle-quotes
-burkeholland.simple-react-snippets
 christian-kohler.npm-intellisense
 cmstead.js-codeformer
 cmstead.jsrefactor
 csstools.postcss
-datadog.datadog-vscode
 davidanson.vscode-markdownlint
 dbaeumer.vscode-eslint
 deerawan.vscode-dash
 deque-systems.vscode-axe-linter
-donjayamanne.githistory
-dsznajder.es7-react-js-snippets
-eamodio.gitlens
 earshinov.permute-lines
 ecmel.vscode-html-css
 editorconfig.editorconfig
-equimper.react-native-react-redux
 esbenp.prettier-vscode
 eserozvataf.one-dark-pro-monokai-darker
+fanaticpythoner.better-todo-tree
 figma.figma-vscode-extension
 firsttris.vscode-jest-runner
 formulahendry.auto-close-tag
@@ -44,11 +37,9 @@ fosshaas.fontsize-shortcuts
 github.vscode-github-actions
 graphql.vscode-graphql
 graphql.vscode-graphql-syntax
-gruntfuggly.todo-tree
 heybourn.headwind
 hjb2012.vscode-es6-string-html
 htmlhint.vscode-htmlhint
-jeffersonlicet.snipped
 jkjustjoshing.vscode-text-pastry
 jock.svg
 johnpapa.vscode-peacock
@@ -56,9 +47,7 @@ jonkwheeler.styled-components-snippets
 josefbiehler.cypress-fixture-intellisense
 kisstkondoros.vscode-gutter-preview
 mblode.pretty-formatter
-mblode.twig-language-2
 mechatroner.rainbow-csv
-mgmcdermott.vscode-language-babel
 mikestead.dotenv
 monokai.theme-monokai-pro-vscode
 mrmlnc.vscode-scss
@@ -67,21 +56,14 @@ ms-azuretools.vscode-docker
 ms-vscode-remote.remote-containers
 ms-vscode.live-server
 ms-vscode.sublime-keybindings
-naumovs.color-highlight
 nrwl.angular-console
 oderwat.indent-rainbow
-orta.vscode-jest
 pflannery.vscode-versionlens
 planbcoding.vscode-react-refactor
-pnp.polacode
 prisma.prisma
-pucelle.vscode-css-navigation
 rcore.rcore-unused-css-classes
 redhat.vscode-yaml
-ritwickdey.liveserver
 sburg.vscode-javascript-booster
-shd101wyy.markdown-preview-enhanced
-shopify.theme-check-vscode
 siegebell.scope-info
 simonsiefke.svg-preview
 sleistner.vscode-fileutils
@@ -97,15 +79,10 @@ ue.alphabetical-sorter
 unifiedjs.vscode-mdx
 usernamehw.errorlens
 vincaslt.highlight-matching-tag
-visualstudioexptteam.intellicode-api-usage-examples
-visualstudioexptteam.vscodeintellicode
-vscode-snippet.snippet
 wallabyjs.console-ninja
 wallabyjs.quokka-vscode
-wayou.vscode-todo-highlight
 william-voyek.vscode-nginx
 wix.vscode-import-cost
-xabikos.javascriptsnippets
 yoavbls.pretty-ts-errors
 yzhang.markdown-all-in-one
 zh9528.file-size
@@ -113,14 +90,14 @@ zhuangtongfa.material-theme
 zignd.html-css-class-completion
 
 # Cursor only
-# anysphere.remote-ssh
 # anysphere.remote-containers
+# anysphere.remote-ssh
+# donjayamanne.githistory
 
 # VS Code only
-# kettanaito.nako
+# gitlab.gitlab-workflow
 # liamhammett.inline-parameters
 # ms-vscode-remote.remote-ssh
 # ms-vscode-remote.remote-ssh-edit
 # ms-vscode.remote-explorer
-# spoonscen.es6-mocha-snippets
-# suming.react-proptypes-generate
+
