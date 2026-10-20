@@ -70,6 +70,12 @@
       path: mise/config.toml
       force: true
 
+    # GUI git (GitHub Desktop) does not load ~/.zshrc. Husky sources this
+    # before hooks so npx resolves through mise shims.
+    ~/.config/husky/init.sh:
+      path: husky/init.sh
+      force: true
+
     ~/.gitignore:
       path: git/gitignore
       force: true

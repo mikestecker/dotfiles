@@ -170,6 +170,7 @@ Create a key with `make ssh-key-create` only when no local `~/.ssh/id_git` exist
 | `install.conf.yaml` | Dotbot link map and install steps |
 | `zsh/zshrc.zsh` | Only interactive shell config |
 | `mise/config.toml` | Global Node LTS, latest pnpm, Python 3.13 |
+| `husky/init.sh` | Mise shims for Git hooks run by GUI git clients |
 | `macos/Brewfile` | Required Homebrew packages |
 | `macos/Brewfile.optional` | Personal apps, installed only by prompt |
 | `vscode/macos/` | Shared Cursor and VS Code settings |
@@ -210,6 +211,7 @@ Dotbot `backup: true` renames a real file to `name.dotbot-backup.YYYYMMDD-HHMMSS
 - **2026-10:** Key comment is `mike@stecker.me`. The fingerprint did not change.
 - **2026-10:** Dotbot backup is on. `make brew` no longer dumps or uninstalls.
 - **2026-10:** mise replaced asdf, nvm, and rbenv for Node, pnpm, and Python.
+- **2026-10:** `~/.config/husky/init.sh` puts mise shims on `PATH`. GitHub Desktop does not load `~/.zshrc`, and the old file still sourced nvm.
 - **2026-10:** `zsh/zshrc.zsh` replaced the optimized and original rc copies.
 - **2026-10:** `op` comes from the `1password-cli` cask. The Developer checkbox only connects an unlocked app. `make ssh-key` reads the `Git` item and writes `id_git.pub`.
 - **2026-10:** Commit bodies tell the other computer what to run, in two sections: installing from scratch, and updating and syncing. A pull reads both before installing.

@@ -498,6 +498,7 @@
   // Object with approveResponse false = fetch without prompting, still review page text.
   "chat.tools.urls.autoApprove": {
     "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
     "https://docs.github.com": true,
     "https://docs.gitlab.com": true,
     "https://docs.datadoghq.com": true,
@@ -507,10 +508,7 @@
     "https://*.chromatic.com": true,
     "https://cursor.com": true,
     "https://code.claude.com": true,
-    "https://github.com": {
-      "approveRequest": true,
-      "approveResponse": false
-    },
+    "https://github.com": true,
     "https://api.github.com": {
       "approveRequest": true,
       "approveResponse": false
@@ -547,5 +545,8 @@
     "[x]"
   ],
   "better-todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-  "sonarlint.automaticAnalysis": false
+  "sonarlint.automaticAnalysis": false,
+  "workbench.experimental.modernUIEditorTabStyle": "pill",
+  "workbench.experimental.share.enabled": true,
+  "window.density.layout": "compact"
 }
