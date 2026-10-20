@@ -9,6 +9,7 @@ Shared runbook: [AGENTS.md](../AGENTS.md). These constraints also apply in Copil
 - mise owns Node, pnpm, and Python. `zsh/zshrc.zsh` is the only shell rc. Edit `macos/Brewfile` by hand.
 - Leave submodule checkouts (`dotbot/`, `zsh/oh-my-zsh/`, `zsh/zgenom/`) unchanged unless the task is to update the gitlink.
 - Commit only when asked. Change only the files the task requires.
+- One-time agent-tooling setup for other repos: use [docs/AGENT_PLUGINS.md](../docs/AGENT_PLUGINS.md), then copy self-contained notes into that project (never link back to these personal dotfiles). This repo is not a storefront — do not enable Datadog here.
 
 Workflows, each with a review before any change:
 

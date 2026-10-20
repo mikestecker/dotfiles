@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Last verified: 2026-10-15.
+Last verified: 2026-10-20.
 
 Personal macOS dotfiles. Files in this repo are symlinked into the home directory by Dotbot. Editing a linked file edits the repo.
 
@@ -178,6 +178,7 @@ Create a key with `make ssh-key-create` only when no local `~/.ssh/id_git` exist
 | `git/work.gitconfig` | Work email and SSH signing |
 | `iterm2/profile.json` | iTerm dynamic profile |
 | `cursor/mcp.json` | Cursor MCP servers. No tokens |
+| `docs/AGENT_PLUGINS.md` | One-time personal playbook: classify work/side, copy self-contained tooling notes into the project (no links back here) |
 
 Dotbot `backup: true` renames a real file to `name.dotbot-backup.YYYYMMDD-HHMMSS` before replacing it. Existing symlinks are relinked. `clean` of `~` and `~/bin` removes dead symlinks that point into this repo. It is not recursive.
 
@@ -187,6 +188,8 @@ Dotbot `backup: true` renames a real file to `name.dotbot-backup.YYYYMMDD-HHMMSS
 - Do not add `nvm`, `rbenv`, Homebrew Python, or a second `~/.zshrc` to `PATH`.
 - Do not move personal casks from `macos/Brewfile.optional` into `macos/Brewfile` unless asked.
 - Do not put API tokens in `cursor/mcp.json`.
+- Work: VS Code + Copilot (Claude preferred) for Salesforce PWA Kit / TypeScript / React 18 / GitLab / Datadog / Figma / Atlassian. Side projects: Cursor + TypeScript on current stacks (GitHub / Stripe / Vercel / Cloudflare / Sentry). One-time setup: open `docs/AGENT_PLUGINS.md` in chat and have the agent copy relevant guidance into that project’s own agent docs (teammates do not have these dotfiles).
+- Datadog, Vercel, and Cloudflare stay workspace- or project-scoped. Work Datadog: `@agentPlugins datadog` then `/ddsetup`; disable outside those workspaces. When a vendor ships both a plugin and an MCP, prefer the plugin and remove the duplicate MCP. Do not leave React 19 upgrade plugins enabled on PWA Kit repos.
 - Do not set global `commit.gpgsign` or `gpg.ssh.program`. 1Password's "Configure Commit Signing" would sign every repo.
 - Do not sync `HISTFILE`. History stays in `~/.zsh_history` on each Mac.
 
