@@ -46,5 +46,6 @@ alias fix="git diff --name-only | uniq | xargs cursor" # Open changed files
 # alias 🖕😏🖕="git push --force"
 alias "git latest"="git for-each-ref --sort=-committerdate refs/heads/"
 
-# Remove 'gl' alias from zsh plugin
-unalias gl
+# Oh My Zsh aliases gl to git pull. Drop it so functions/gl.sh owns the name.
+# A second source in the same shell skips plugin init, so the alias may already be gone.
+unalias gl 2>/dev/null
